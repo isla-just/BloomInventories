@@ -26,10 +26,12 @@
     <div class="navigation">
         <div class="logo">BLOOM INVENTORIES</div>
         <div class="line"></div>
-        <h3 class="activeH">Dashboard</h3>
-        <h3>Inventory</h3>
-        <h3>Create</h3>
-        <h3>Sales Portal</h3>
+
+        <a class="nav-link activeH" asp-area="" asp-page="/Dashboard"><h3>Dashboard</h3></a>
+        <a class="nav-link" asp-area="" asp-page="/Dashboard"><h3>Inventory</h3></a>
+        <a class="nav-link" asp-area="" asp-page="/Dashboard"><h3>Create</h3></a>
+        <a class="nav-link" asp-area="" asp-page="/Dashboard"><h3>Sales Portal</h3></a>
+
     </div>
 
     <div style="width: 55%; height: 100vh; float: left; background-color: #FDFCF7;">
@@ -41,17 +43,50 @@
                 <option>Carnation Corner</option>
             </select>
 
-            <h3 class="sub-nav">Home</h3>
-            <h3 class="sub-nav">Inventory</h3>
-            <h3 class="sub-nav">Create</h3>
+            <a class="sub-nav" asp-area="" asp-page="/Index">Home</a>
+            <a class="sub-nav" asp-area="" asp-page="/Index">Inventory</a>
+            <a class="sub-nav" asp-area="" asp-page="/Index">Create</a>
 
         </div>
 
         <h1>The most fresh floral <stong>creations</stong> happen here...</h1>
-       
+
         <div class="seasonal">
+            <h3>Flowers in season</h3>
+            <div class="flower-container">
+                <img class="flower-img" src="https://i.pinimg.com/564x/96/d5/a5/96d5a53baec7beba1e14f7db7305a5e0.jpg" style="border-radius: 20px 20px 40px 20px;" />
+                <h4>Pink rose</h4>
+            </div>
+        </div>
+
+        <div class="seasonal" style="margin-top:30px">
+            <h3>Stock running low</h3>
+            <div class="flower-container">
+                <img class="flower-img" src="https://i.pinimg.com/564x/96/d5/a5/96d5a53baec7beba1e14f7db7305a5e0.jpg" style="border-radius: 20px 20px 40px 20px;" />
+                <h4>Pink rose</h4>
+            </div>
+        </div>
     </div>
-       
-  
+
+    <div style="width: 25%; height: 100vh; float: left; background-color: #F0F1EB; padding:20px">
+        <h3 class="logo" style="color: #2E3D30; margin-left:35px; margin-top:20px; font-size:15px">BOUQUET OF THE WEEK</h3>
+        <div class="weekly">
+        <img src="https://i.pinimg.com/564x/37/82/9e/37829e4b9df9edb27f48e7a823248947.jpg" style="width:100%; border-radius: 150px 150px 0px 0px;"/>
+        </div>
+
+        <h5 class="weeklyHeader">Peach perfect</h5>
+        <h6 class="weeklyCat">floral</h6>
+        <p class="weeklyP">Orange roses, peach ranunculus, mini orange roses, peach carnation, baby’s breath, eucalyptus, brown tissue paper, pink ribbon, white ribbon</p>
+
+        <div class="create">CREATE NOW</div>
+
+        <div class="subs">
+            <h2>41</h2>
+            <div class="line2"></div>
+            <h4>Weekly <br />subscriptions</h4>
+        </div>
+    </div>
+
+
 </body>
 </html>
