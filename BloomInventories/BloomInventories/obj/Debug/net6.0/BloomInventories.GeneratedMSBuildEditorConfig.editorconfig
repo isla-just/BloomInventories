@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/Pages/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/Pages/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
