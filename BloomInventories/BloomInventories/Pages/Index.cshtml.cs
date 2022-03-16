@@ -5,6 +5,8 @@ namespace BloomInventories.Pages;
 
 public class IndexModel : PageModel
 {
+    public string Message = "";
+
     private readonly ILogger<IndexModel> _logger;
 
     public IndexModel(ILogger<IndexModel> logger)
@@ -14,7 +16,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-
+        Message = Services.Database.GetVersion();
     }
 }
 
