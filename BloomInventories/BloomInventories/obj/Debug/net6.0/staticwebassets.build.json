@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2wv11TECmer4mehFkyRcDOLKkQ/cUzrZpsaDcAm+PSU=",
+  "Hash": "X92BqyP87ehIMzl/hA9ukRHcpVs45ksA7c2UxmujWAw=",
   "Source": "BloomInventories",
   "BasePath": "_content/BloomInventories",
   "Mode": "Default",
@@ -219,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/header.png"
+    },
+    {
+      "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/location.png",
+      "SourceId": "BloomInventories",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/",
+      "BasePath": "_content/BloomInventories",
+      "RelativePath": "images/location.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/location.png"
     },
     {
       "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/js/site.js",

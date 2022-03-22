@@ -16,6 +16,19 @@ namespace BloomInventories.Models
 		{
 			Database.UpdateFlowerQuantity(name, quantity);
 		}
+
+
+		public int GetCount(string name)
+		{
+			foreach (var flower in Flowers)
+			{
+				if (flower.Name == name)
+				{
+					return flower.Quantity;
+				}
+			}
+			return -1;
+		}
 	}
 }
 

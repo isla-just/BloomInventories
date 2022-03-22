@@ -167,3 +167,61 @@ a {
     margin-right: 40px;
     color: #546757;
 }
+
+.test-block {
+    width 100%;
+    height: 80vh;
+    border-radius: 0px 0px 200px 200px;
+    background-color: #FDFCF7;
+    z-index:0;
+    position:relative;
+}
+
+.test-block2 {
+    width 100%;
+    height: 90vh;
+    border-radius: 0px 0px 200px 200px;
+    background-color: #546757;
+    margin-top: -200px;
+    z-index: -1;
+    position: relative;
+}
+
+.test-block3 {
+    width 100%;
+    height: 80vh;
+    border-radius: 0px 0px 200px 200px;
+    background-color: #2E3D30;
+    margin-top: -200px;
+    z-index: -2;
+    position: relative;
+}
+
+.meet {
+    color: #2E3D30;
+    font-family: 'Antic Didone', serif;
+    font-size: 60px;
+    width: 80%;
+    margin-left: 18%;
+    margin-top:120px;
+    line-height:1.3;
+    float:left;
+}
+
+.visit {
+    width: 12%;
+    padding: 12px;
+    background-color: #C2C6B1;
+    border-radius: 0px 40px 40px 0px;
+    margin-left: 18%;
+    margin-top:30px;
+    letter-spacing:3px;
+    font-weight:500;
+    font-size:15px;
+}
+
+.arch2 {
+    float:left;
+    width:90%;
+    height:40vh;
+}
