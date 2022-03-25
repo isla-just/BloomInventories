@@ -162,6 +162,76 @@ namespace BloomInventories.Services
 			//UpdateBlockCountAfterCraft(materials);
 		}
 
+		//getting all the seasonal flowers
+		public static List<Flower> GetAllSeasonal()
+		{
+			using var con = new MySqlConnection(serverConfiguration);
+			//open the connection
+			con.Open();
+
+			//setup out query
+			string sql = "SELECT * FROM materials WHERE category='seasonal' AND location_id=1";
+
+			using var cmd = new MySqlCommand(sql, con);
+
+			//creates an instance of our command result that can be read in c#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			//init our returned list
+			var results = new List<Flower>();
+
+			//loop through all the data
+			while (reader.Read())
+			{
+				//there are 8 columns that we need to count but the quantity (constructor value is at position 3
+				var flower = new Flower(reader.GetInt32(3))
+				{
+					Name = reader.GetString(1),
+					Category = reader.GetString(2),
+					ImgUrl = reader.GetString(4),
+
+					//not all of the fields are here yet
+
+				};//flower var
+				results.Add(flower);
+			}//while
+			return results;
+		}//getting all flowers list
+
+		//getting all the low quantity flowers
+		public static List<Flower> GetLowFlowers()
+		{
+			using var con = new MySqlConnection(serverConfiguration);
+			//open the connection
+			con.Open();
+
+			//setup out query
+			string sql = "SELECT * FROM materials WHERE quantity<10 AND location_id=1";
+
+			using var cmd = new MySqlCommand(sql, con);
+
+			//creates an instance of our command result that can be read in c#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			//init our returned list
+			var results = new List<Flower>();
+
+			//loop through all the data
+			while (reader.Read())
+			{
+				//there are 8 columns that we need to count but the quantity (constructor value is at position 3
+				var flower = new Flower(reader.GetInt32(3))
+				{
+					Name = reader.GetString(1),
+					ImgUrl = reader.GetString(4),
+
+					//not all of the fields are here yet
+
+				};//flower var
+				results.Add(flower);
+			}//while
+			return results;
+		}//getting all flowers list
 
 		public Database()
 		{

@@ -11,9 +11,13 @@ namespace BloomInventories.Pages
 	public class InventoryModel : PageModel
     {
         public List<Flower> allFlowers = new List<Flower>();
+        public string Message { get; set; } = string.Empty;
 
-        public void OnGet()
+        public void OnGet(string message="")
         {
+            //sending the message so we can get a popup
+            Message = message;
+
             //calling flowers from inventory model
             allFlowers = new Inventory().Flowers;
         }//onget
@@ -24,7 +28,7 @@ namespace BloomInventories.Pages
             Console.WriteLine($"{name} should change to {quantity}");
             new Inventory().UpdateQuantity(name, quantity);
 
-            return RedirectToPage("Inventory");
+            return Redirect($"./Inventory/?message={name} has been updated to {quantity}");
         }
     }
 }

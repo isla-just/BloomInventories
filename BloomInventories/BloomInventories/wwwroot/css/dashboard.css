@@ -115,6 +115,7 @@ h1 {
 
 }
 
+
 .seasonal {
     width: 85%;
     height: 240px;
@@ -123,7 +124,8 @@ h1 {
     margin-left: 60px;
     margin-top: 200px;
     display: block;
-    padding: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -133,13 +135,15 @@ h3 {
     font-weight: 400;
     color: #546757;
     font-size:15px;
+    margin-left:30px;
 }
 
 .flower-container {
     width: 120px;
     height: auto;
-
-    margin-top:20px;
+    margin-top: 20px;
+    margin-left: 30px;
+    display: inline-block;
 }
 
 .flower-img {
@@ -148,11 +152,14 @@ h3 {
 }
 
 .flower-container h4 {
+    width: 120px;
     text-align: center;
-    font-size: 15px;
+    font-size: 13px;
     color: #4D593F;
-    font-weight:300;
-    margin-top:10px;
+    font-weight: 300;
+    margin-top: 10px;
+    height: 40px;
+    word-wrap: break-word;
 }
 
 .weekly {

@@ -52,19 +52,32 @@
         <h1>The most fresh floral <stong>creations</stong> happen here...</h1>
 
         <div class="seasonal">
-            <h3>Flowers in season</h3>
-            <div class="flower-container">
-                <img class="flower-img" src="https://i.pinimg.com/564x/96/d5/a5/96d5a53baec7beba1e14f7db7305a5e0.jpg" style="border-radius: 20px 20px 40px 20px;" />
-                <h4>Pink rose</h4>
-            </div>
-        </div>
+            <h3>Seasonal Flowers</h3>
+
+            @foreach (var seasonalFlower in Model.AllSeasonalFlowers)
+            {
+                <div class="flower-container">
+                    <img class="flower-img" src="@seasonalFlower.ImgUrl" style="border-radius: 20px 20px 40px 20px;" />
+                    <h4>@seasonalFlower.Name</h4>
+                </div>
+
+            }
+
+        </div><!--seasonal container-->
 
         <div class="seasonal" style="margin-top:30px">
             <h3>Stock running low</h3>
-            <div class="flower-container">
-                <img class="flower-img" src="https://i.pinimg.com/564x/96/d5/a5/96d5a53baec7beba1e14f7db7305a5e0.jpg" style="border-radius: 20px 20px 40px 20px;" />
-                <h4>Pink rose</h4>
-            </div>
+
+            @foreach (var lowFlowers in Model.AllLowFlowers)
+            {
+        <div class="flower-container">
+            <img class="flower-img" src="@lowFlowers.ImgUrl" style="border-radius: 20px 20px 40px 20px;" />
+            <h4>@lowFlowers.Name | <strong>@lowFlowers.Quantity</strong></h4>
+        
+        </div>
+
+            }
+
         </div>
     </div>
 

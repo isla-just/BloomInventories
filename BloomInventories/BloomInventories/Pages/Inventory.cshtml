@@ -20,9 +20,26 @@
     <link rel="stylesheet" href="~/BloomInventories.styles.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
+    @{
+        if (Model.Message != "")
+        {
+            <div class="overlay">
+                <div class="card-popup">
+                    <div class="top-illustration"><img src="~/images/illustration.png" style="width: 100%; margin-top: 30px;" /></div>
+                    <h5>STOCK TAKE</h5>
+                    <p>@Model.Message <br />at Bloom Headquarters</p>
+                    <div class="close">DONE</div>
+                </div>
+            </div>
+        }
+    }
+
 
     <div class="navigation">
         <div class="logo">BLOOM INVENTORIES</div>
@@ -38,7 +55,11 @@
     <div style="width: 80%; height: 100vh; float: left; background-color: #FDFCF7;">
 
         <div class="row">
-            <input class="location-picker" placeholder="Flower search" />
+            <select class="location-picker">
+                <option>Bloom Headquarters</option>
+                <option>Peony Place</option>
+                <option>Carnation Corner</option>
+            </select>
 
             <a class="sub-nav" asp-area="" asp-page="/Index">Home</a>
             <a class="sub-nav" asp-area="" asp-page="/Inventory"><strong>Inventory</strong></a>
@@ -46,43 +67,51 @@
 
         </div>
 
-        
+
 
         <div class="card-container">
 
-            @foreach(var flower in Model.allFlowers)
+            @foreach (var flower in Model.allFlowers)
             {
-            <div class="card">
+                <div class="card">
 
-                <div class="row">
+                    <div class="row">
 
-                    <div class="weekly">
-                        <img src="@flower.ImgUrl" />
+                        <div class="weekly">
+                            <img src="@flower.ImgUrl" />
+                        </div>
+
+                        <div style="float:left; width:50%">
+                            <h3>@flower.Name</h3>
+                            <h5>@flower.Category</h5>
+                        </div>
+
                     </div>
 
-                    <div style="float:left; width:50%">
-                        <h3>@flower.Name</h3>
-                        <h5>@flower.Category</h5>
-                    </div>
+                    <form method="post" asp-page-handler="update" class="row">
+                        <input class="form-controller quantity" name="quantity" value="@flower.Quantity" type="number" min="0" step="1" />
+                        <input type="hidden" name="name" value="@flower.Name" />
+                        <button class="done">Update</button>
+                    </form>
 
                 </div>
-
-                <form method="post" asp-page-handler="update" class="row">
-                    <input class="form-controller quantity" name="quantity" value="@flower.Quantity" type="number" min="0" step="1" />
-                    <input type="hidden" name="name" value="@flower.Name" />
-                    <button class="done">Update</button>
-                </form>
-
-            </div>
             }
-          
+
 
 
 
         </div>
     </div>
 
+    <script>//jquery
 
- 
+        $(function () {
+            $(".close").on("click", function () {
+                $(".overlay").fadeOut();
+          
+            });
+        });</script>
+
 </body>
+
 </html>
