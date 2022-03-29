@@ -12,20 +12,24 @@ namespace BloomInventories.Pages
     {
 
         public List<Recipe> allRecipes = new List<Recipe>();
+        public bool MessageSuccess { get; set; }
 
-        public void OnGet()
+        public void OnGet(bool success = true)
         {
             allRecipes = new RecipeBook(1).Recipes;
+            MessageSuccess = success;
         }
 
 
-        public IActionResult OnPostUpdate(string name, int count, int location_id)
+        public IActionResult OnPostCraft(string name, int quantity, List<string> materials, int location_id)
         {
-            Console.WriteLine($"{name} should change to {count+1}");
-            new Inventory(location_id).UpdateQuantity(name, count+1, location_id);
+            Console.WriteLine($"{name} should change to {quantity+1}");
+            //new RecipeBook().CraftRecipe(name, quantity + 1, materials, location_id);
 
-            return RedirectToPage("./Create");
+
+            return Redirect($"./Craft/?message=There are now {quantity} {name}");
         }
+
 
         public void OnPostLocation(int location_id)
         {

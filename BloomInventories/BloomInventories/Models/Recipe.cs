@@ -18,7 +18,7 @@ namespace BloomInventories.Models
 
         public string ImgUrl { get; set; } = string.Empty;
         public int Price { get; set; }
-        public int Location_id { get; set; }
+        public int location_id { get; set; }
 
         public List<string> Materials { get; set; }
 
@@ -54,7 +54,7 @@ namespace BloomInventories.Models
             }
 
             bool result = true;
-            var inventory = new Inventory(Location_id);
+            var inventory = new Inventory(location_id);
 
             //loop through our ingredient dicttionary to check if it is craftable
             foreach (var pair in map)

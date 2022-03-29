@@ -14,7 +14,7 @@ namespace BloomInventories.Models
 
 		public void UpdateQuantity(string name, int quantity, int location_id)
 		{
-			Console.WriteLine(location_id);
+			Console.WriteLine(quantity);
 			Database.UpdateFlowerQuantity(name, quantity, location_id);
 		}
 

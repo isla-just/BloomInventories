@@ -199,17 +199,31 @@ a {
     font-size:12px;
 }
 
-.done {
+.amount {
     margin-top: 20px;
-    width: 100%;
+    width: 25%;
     background-color: #E3E4D8;
     padding: 13px;
     border-radius: 10px;
     color: #546757;
     border: none;
     float: left;
-
     text-align: center;
+    font-size:15px;
+}
+
+.done {
+    margin-left: 5%;
+    margin-top: 20px;
+    width: 70%;
+    background-color: #E3E4D8;
+    padding: 13px;
+    border-radius: 10px;
+    color: #546757;
+    border: none;
+    float: left;
+    text-align: center;
+    font-size: 15px;
 }
 
 /*    .done:hover {

@@ -99,24 +99,24 @@
                             {
                                 if (material != "")
                                 {
-                                    @material
+                                    @material 
                                 }
                             }
-                        </p>
-
+                       ,  </p>
                     </div>
 
                     @{ if (recipe.IsCraftable())
                         {
-                            <form method="post" asp-page-handler="update" asp-route-name="@recipe.Name" asp-route-count="@recipe.Quantity" asp-route-location_id="@recipe.Location_id">
+                            <form method="post" asp-page-handler="craft" asp-route-name="@recipe.Name"
+                                  asp-route-quantity="@recipe.Quantity" asp-route-location_id="@recipe.location_id">
                                 @{
                                     foreach (var material in recipe.Materials)
                                     {
                                         <input type="hidden" name="materials[]" value="@material" />
                                     }
                                 }
-
-                                <input class="done" type="submit" value="Create Bouquet" />
+                                <div class="amount">@recipe.Quantity</div>
+                                <input class="done" type="submit" value="Create" />
                             </form>
                         }
                     }

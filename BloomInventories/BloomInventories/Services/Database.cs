@@ -118,7 +118,7 @@ namespace BloomInventories.Services
 					Category = reader.GetString(2),
 					ImgUrl = reader.GetString(4),
 					Price = reader.GetInt32(5),
-					Location_id = reader.GetInt32(6)
+					location_id = reader.GetInt32(6)
 				};
 
 				var materials = new List<string>();
@@ -143,7 +143,7 @@ namespace BloomInventories.Services
 			return results;
 		}
 
-		public static void CraftRecipe(string nameId, int newCount, List<string> materials, int location_id)
+		public static void CraftRecipe(string name, int count, List<string> materials, int location_id)
 		{
 			//connect to db
 			using var con = new MySqlConnection(serverConfiguration);
@@ -157,8 +157,8 @@ namespace BloomInventories.Services
 			using var cmd = new MySqlCommand(sql, con);
 
 			//using placeholders and assigning them values
-			cmd.Parameters.AddWithValue("@name", nameId);
-			cmd.Parameters.AddWithValue("@count", newCount);
+			cmd.Parameters.AddWithValue("@name", name);
+			cmd.Parameters.AddWithValue("@count", count);
 			cmd.Parameters.AddWithValue("@location_id", location_id);
 
 			cmd.Prepare();
