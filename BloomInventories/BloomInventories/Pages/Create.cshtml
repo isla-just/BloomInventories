@@ -52,11 +52,17 @@
     <div style="width: 80%; height: 100vh; float: left; background-color: #FDFCF7;">
 
         <div class="row">
-            <select class="location-picker">
-                <option>Bloom Headquarters</option>
-                <option>Peony Place</option>
-                <option>Carnation Corner</option>
-            </select>
+
+            <form method="post" asp-page-handler="location" class="location-container">
+
+                <select class="location-picker" name="location_id" value="1">
+                    <option class="option1" value="1">Bloom Headquarters</option>
+                    <option class="option2" value="2">Peony Place</option>
+                    <option class="option3" value="3">Carnation Corner</option>
+                </select>
+
+                <input class="btn confirm" type="submit" value="CHANGE" style="float:left;" />
+            </form>
 
             <a class="sub-nav" asp-area="" asp-page="/Index">Home</a>
             <a class="sub-nav" asp-area="" asp-page="/Inventory">Inventory</a>
@@ -102,13 +108,14 @@
 
                     @{ if (recipe.IsCraftable())
                         {
-                            <form method="post" asp-page-handler="update" asp-route-name="@recipe.Name" asp-route-count="@recipe.Quantity">
+                            <form method="post" asp-page-handler="update" asp-route-name="@recipe.Name" asp-route-count="@recipe.Quantity" asp-route-location_id="@recipe.Location_id">
                                 @{
                                     foreach (var material in recipe.Materials)
                                     {
                                         <input type="hidden" name="materials[]" value="@material" />
                                     }
                                 }
+
                                 <input class="done" type="submit" value="Create Bouquet" />
                             </form>
                         }

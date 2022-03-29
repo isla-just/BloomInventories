@@ -24,16 +24,17 @@ namespace BloomInventories.Services
 		}
 
 		//getting all the flowers in our databses
-		public static List<Flower> GetAllFlowers()
+		public static List<Flower> GetAllFlowers(int location_id)
         {
 			using var con = new MySqlConnection(serverConfiguration);
 			//open the connection
 			con.Open();
 
 			//setup out query
-			string sql = "SELECT * FROM materials WHERE location_id=1";
+			string sql = "SELECT * FROM materials WHERE location_id=@location_id";
 
 			using var cmd = new MySqlCommand(sql, con);
+			cmd.Parameters.AddWithValue("@location_id", location_id);
 
 			//creates an instance of our command result that can be read in c#
 			using MySqlDataReader reader = cmd.ExecuteReader();
@@ -50,6 +51,7 @@ namespace BloomInventories.Services
 					Name = reader.GetString(1),
 					Category = reader.GetString(2),
 					ImgUrl = reader.GetString(4),
+					Location_id = reader.GetInt32(5),
 
 					//not all of the fields are here yet
 
@@ -61,7 +63,7 @@ namespace BloomInventories.Services
 
 
 		//update the quantity of our flowers
-		public static void UpdateFlowerQuantity(string name, int newQuantity)
+		public static void UpdateFlowerQuantity(string name, int newQuantity, int location_id)
 		{
 			//connect to db
 			using var con = new MySqlConnection(serverConfiguration);
@@ -71,29 +73,32 @@ namespace BloomInventories.Services
 			//sql query
 			//setup out query
 			
-			string sql = $"UPDATE materials SET quantity = @quantity WHERE(name = @name AND location_id = 1)";
+			string sql = $"UPDATE materials SET quantity = @quantity WHERE(name = @name AND location_id = @location_id)";
 			//executing our command
 			using var cmd = new MySqlCommand(sql, con);
 
 			//using placeholders and assigning them values
 			cmd.Parameters.AddWithValue("@name", name);
 			cmd.Parameters.AddWithValue("@quantity", newQuantity);
+			cmd.Parameters.AddWithValue("@location_id", location_id);
 
 			cmd.Prepare();
 			cmd.ExecuteNonQuery();
 		}
 
 		//getting all the recipes
-		public static List<Recipe> GetAllRecipes()
+		public static List<Recipe> GetAllRecipes(int location_id)
         {
 			using var con = new MySqlConnection(serverConfiguration);
 			//open the connection
 			con.Open();
 
 			//setup out query
-			string sql = "SELECT * FROM bouquets WHERE location_id=1";
+			string sql = "SELECT * FROM bouquets WHERE location_id=@location_id";
 			//executing our command
 			using var cmd = new MySqlCommand(sql, con);
+
+			cmd.Parameters.AddWithValue("@location_id", location_id);
 
 			//creates an instance of our command result that can be read in c#
 			using MySqlDataReader reader = cmd.ExecuteReader();
@@ -138,7 +143,7 @@ namespace BloomInventories.Services
 			return results;
 		}
 
-		public static void CraftRecipe(string nameId, int newCount, List<string> materials)
+		public static void CraftRecipe(string nameId, int newCount, List<string> materials, int location_id)
 		{
 			//connect to db
 			using var con = new MySqlConnection(serverConfiguration);
@@ -147,13 +152,14 @@ namespace BloomInventories.Services
 
 			//sql query
 			//setup out query
-			string sql = $"UPDATE bouquets SET quantity=@count WHERE name=@name";
+			string sql = $"UPDATE bouquets SET quantity=@count WHERE name=@name AND location_id=@location_id";
 			//executing our command
 			using var cmd = new MySqlCommand(sql, con);
 
 			//using placeholders and assigning them values
 			cmd.Parameters.AddWithValue("@name", nameId);
 			cmd.Parameters.AddWithValue("@count", newCount);
+			cmd.Parameters.AddWithValue("@location_id", location_id);
 
 			cmd.Prepare();
 			cmd.ExecuteNonQuery();
@@ -173,6 +179,7 @@ namespace BloomInventories.Services
 			string sql = "SELECT * FROM materials WHERE category='seasonal' AND location_id=1";
 
 			using var cmd = new MySqlCommand(sql, con);
+	
 
 			//creates an instance of our command result that can be read in c#
 			using MySqlDataReader reader = cmd.ExecuteReader();
@@ -198,17 +205,19 @@ namespace BloomInventories.Services
 			return results;
 		}//getting all flowers list
 
+
 		//getting all the low quantity flowers
-		public static List<Flower> GetLowFlowers()
+		public static List<Flower> GetLowFlowers(int location_id)
 		{
 			using var con = new MySqlConnection(serverConfiguration);
 			//open the connection
 			con.Open();
 
 			//setup out query
-			string sql = "SELECT * FROM materials WHERE quantity<10 AND location_id=1";
+			string sql = "SELECT * FROM materials WHERE quantity<10 AND location_id=@location_id";
 
 			using var cmd = new MySqlCommand(sql, con);
+			cmd.Parameters.AddWithValue("@location_id", location_id);
 
 			//creates an instance of our command result that can be read in c#
 			using MySqlDataReader reader = cmd.ExecuteReader();

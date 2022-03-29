@@ -83,15 +83,19 @@ a {
     text-overflow: '';
 }
 
-.location-picker {
+.location-container {
     margin-left: 60px;
     margin-top: 25px;
     width: 40%;
+}
+
+.location-picker {
+    width:100%;
     background-color: #C2C6B130;
     padding: 13px;
     border-radius: 10px;
     color: #546757;
-    border:none;
+    border: none;
 }
 
 .sub-nav {
@@ -119,13 +123,35 @@ a {
     cursor:pointer;
 }
 
+.confirm {
+    background-color: #546757;
+    color: white;
+    width: 100px;
+    float: left;
+    margin-top: -44px;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 7px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-left:332px;
+    position:relative;
+    z-index:1;
+}
+
+    .confirm:hover {
+        color:white;
+        font-weight:400;
+    }
+
 .card-container {
     width: 92%;
     height: 88vh;
-    margin-left:40px;
-    margin-top:20px;
-    overflow:scroll;
-    padding-bottom:20px;
+    margin-left: 40px;
+    margin-top: 20px;
+    overflow: scroll;
+    padding-bottom: 20px;
 }
 
 .card {

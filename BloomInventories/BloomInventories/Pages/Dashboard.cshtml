@@ -37,11 +37,16 @@
     <div style="width: 55%; height: 100vh; float: left; background-color: #FDFCF7;">
 
         <div class="row">
-            <select class="location-picker">
-                <option>Bloom Headquarters</option>
-                <option>Peony Place</option>
-                <option>Carnation Corner</option>
-            </select>
+            <form method="post" asp-page-handler="location" class="location-container">
+
+                <select class="location-picker" name="location_id" value="1">
+                    <option class="option1" value="1">Bloom Headquarters</option>
+                    <option class="option2" value="2">Peony Place</option>
+                    <option class="option3" value="3">Carnation Corner</option>
+                </select>
+
+                <input class="btn confirm" type="submit" value="CHANGE" style="float:left;" />
+            </form>
 
             <a class="sub-nav" asp-area="" asp-page="/Index">Home</a>
             <a class="sub-nav" asp-area="" asp-page="/Inventory">Inventory</a>
@@ -70,11 +75,11 @@
 
             @foreach (var lowFlowers in Model.AllLowFlowers)
             {
-        <div class="flower-container">
-            <div class="img-container"><img class="flower-img" src="@lowFlowers.ImgUrl" /></div>
-            <h4>@lowFlowers.Name | <strong>@lowFlowers.Quantity</strong></h4>
+                <div class="flower-container">
+                    <div class="img-container"><img class="flower-img" src="@lowFlowers.ImgUrl" /></div>
+                    <h4>@lowFlowers.Name | <strong>@lowFlowers.Quantity</strong></h4>
 
-        </div>
+                </div>
 
             }
 
@@ -84,7 +89,7 @@
     <div style="width: 25%; height: 100vh; float: left; background-color: #F0F1EB; padding:20px">
         <h3 class="logo" style="color: #2E3D30; margin-left:35px; margin-top:20px; font-size:15px">BOUQUET OF THE WEEK</h3>
         <div class="weekly">
-        <img src="https://i.pinimg.com/564x/37/82/9e/37829e4b9df9edb27f48e7a823248947.jpg" style="width:100%; border-radius: 150px 150px 0px 0px;"/>
+            <img src="https://i.pinimg.com/564x/37/82/9e/37829e4b9df9edb27f48e7a823248947.jpg" style="width:100%; border-radius: 150px 150px 0px 0px;" />
         </div>
 
         <h5 class="weeklyHeader">Peach perfect</h5>

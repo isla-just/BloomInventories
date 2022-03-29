@@ -82,16 +82,43 @@ a {
     text-overflow: '';
 }
 
-.location-picker {
+
+.location-container {
     margin-left: 60px;
     margin-top: 25px;
-    width: 40%;
+    width: 45%;
+}
+
+.location-picker {
+    width: 100%;
     background-color: #C2C6B130;
     padding: 13px;
     border-radius: 10px;
     color: #546757;
-    border:none;
+    border: none;
 }
+
+.confirm {
+    background-color: #546757;
+    color: white;
+    width: 100px;
+    float: left;
+    margin-top: -44px;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 7px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 228px;
+    position: relative;
+    z-index: 1;
+}
+
+    .confirm:hover {
+        color: white;
+        font-weight: 400;
+    }
 
 .sub-nav {
     color: #546757;

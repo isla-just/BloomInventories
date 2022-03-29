@@ -8,16 +8,16 @@ namespace BloomInventories.Models
 
 		public List<Recipe> Recipes = new List<Recipe>();
 
-		public RecipeBook()
+		public RecipeBook(int location_id)
 		{
-			Recipes = Database.GetAllRecipes();
+			Recipes = Database.GetAllRecipes(location_id);
 		}
 
 
-        public void CraftRecipe(string name, int quantity, List<string> materials)
+        public void CraftRecipe(string name, int quantity, List<string> materials, int location_id)
         {
             //call the database function
-            Database.CraftRecipe(name, quantity, materials);
+            Database.CraftRecipe(name, quantity, materials, location_id);
         }
     }
 }

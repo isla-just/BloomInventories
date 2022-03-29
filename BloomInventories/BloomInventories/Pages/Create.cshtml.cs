@@ -15,16 +15,26 @@ namespace BloomInventories.Pages
 
         public void OnGet()
         {
-            allRecipes = new RecipeBook().Recipes;
+            allRecipes = new RecipeBook(1).Recipes;
         }
 
 
-        public IActionResult OnPostUpdate(string name, int count)
+        public IActionResult OnPostUpdate(string name, int count, int location_id)
         {
             Console.WriteLine($"{name} should change to {count+1}");
-            new Inventory().UpdateQuantity(name, count+1);
+            new Inventory(location_id).UpdateQuantity(name, count+1, location_id);
 
             return RedirectToPage("./Create");
         }
+
+        public void OnPostLocation(int location_id)
+        {
+            Console.WriteLine(location_id);
+
+            allRecipes = new RecipeBook(location_id).Recipes;
+
+            //return RedirectToPage("./Dashboard");
+        }
+
     }
 }

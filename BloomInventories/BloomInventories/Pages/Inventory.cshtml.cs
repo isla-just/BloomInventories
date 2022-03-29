@@ -19,16 +19,25 @@ namespace BloomInventories.Pages
             Message = message;
 
             //calling flowers from inventory model
-            allFlowers = new Inventory().Flowers;
+            allFlowers = new Inventory(1).Flowers;
         }//onget
 
         //to update and call the post method
-        public IActionResult OnPostUpdate(string name, int quantity)
+        public IActionResult OnPostUpdate(string name, int quantity, int location_id)
         {
             Console.WriteLine($"{name} should change to {quantity}");
-            new Inventory().UpdateQuantity(name, quantity);
+            new Inventory(location_id).UpdateQuantity(name, quantity, location_id);
 
             return Redirect($"./Inventory/?message=There are now {quantity} {name}");
+        }
+
+        public void OnPostLocation(int location_id)
+        {
+            Console.WriteLine(location_id);
+
+            allFlowers = new Inventory(location_id).Flowers;
+
+            //return RedirectToPage("./Dashboard");
         }
     }
 }

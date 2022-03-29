@@ -18,7 +18,18 @@ namespace BloomInventories.Pages
         public void OnGet()
         {
             AllSeasonalFlowers = Database.GetAllSeasonal();
-            AllLowFlowers = Database.GetLowFlowers();
+            AllLowFlowers = Database.GetLowFlowers(1);
+        }
+
+        public void  OnPostLocation(int location_id)
+        {
+            Console.WriteLine(location_id);
+            Database.GetLowFlowers(location_id);
+
+            AllLowFlowers = Database.GetLowFlowers(location_id);
+            AllSeasonalFlowers = Database.GetAllSeasonal();
+
+            //return RedirectToPage("./Dashboard");
         }
     }
 }

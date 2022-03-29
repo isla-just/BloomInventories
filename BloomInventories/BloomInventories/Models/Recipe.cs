@@ -54,9 +54,9 @@ namespace BloomInventories.Models
             }
 
             bool result = true;
-            var inventory = new Inventory();
+            var inventory = new Inventory(Location_id);
 
-            //loop through our ingredient dicttionary 
+            //loop through our ingredient dicttionary to check if it is craftable
             foreach (var pair in map)
             {
                 if (pair.Value > inventory.GetCount(pair.Key))

@@ -7,14 +7,15 @@ namespace BloomInventories.Models
 	{
         public List<Flower> Flowers = new List<Flower>();
 
-        public Inventory()
+        public Inventory(int location_id)
 		{
-			Flowers = Database.GetAllFlowers();
+			Flowers = Database.GetAllFlowers(location_id);
 		}
 
-		public void UpdateQuantity(string name, int quantity)
+		public void UpdateQuantity(string name, int quantity, int location_id)
 		{
-			Database.UpdateFlowerQuantity(name, quantity);
+			Console.WriteLine(location_id);
+			Database.UpdateFlowerQuantity(name, quantity, location_id);
 		}
 
 
