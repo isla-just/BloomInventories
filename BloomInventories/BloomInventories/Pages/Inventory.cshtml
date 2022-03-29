@@ -40,6 +40,17 @@
         }
     }
 
+    <div class="filter-overlay">
+        <div class="side-filter">
+            <div class="cross"><img src="~/images/close.png" style="width:60%" /></div>
+            <p class="show" style="margin-top:340px; font-weight:500">Filter</p>
+            <p class="show active-show" value="all">SHOW ALL</p>
+            <p class="show" value="evergreen">SHOW ALL EVERGREENS</p>
+            <p class="show" value="seasonal">SHOW ALL SEASONAL</p>
+            <p class="show" value="packaging">SHOW ALL PACKAGING</p>
+        </div>
+    </div>
+
 
     <div class="navigation">
         <div class="logo">BLOOM INVENTORIES</div>
@@ -64,6 +75,7 @@
             <a class="sub-nav" asp-area="" asp-page="/Index">Home</a>
             <a class="sub-nav" asp-area="" asp-page="/Inventory"><strong>Inventory</strong></a>
             <a class="sub-nav" asp-area="" asp-page="/Create">Create</a>
+            <div class="filter-btn">Filter</div>
 
         </div>
 
@@ -73,13 +85,11 @@
 
             @foreach (var flower in Model.allFlowers)
             {
-                <div class="card">
+                <div class="card" value="@flower.Category">
 
                     <div class="row">
 
-                        <div class="weekly">
-                            <img src="@flower.ImgUrl" />
-                        </div>
+                        <div class="img-container"><img class="flower-img" src="@flower.ImgUrl" /></div>
 
                         <div style="float:left; width:50%">
                             <h3>@flower.Name</h3>
@@ -106,10 +116,50 @@
     <script>//jquery
 
         $(function () {
+
+            $(".filter-overlay").hide();
+
             $(".close").on("click", function () {
                 $(".overlay").fadeOut();
-          
             });
+
+
+            $(".cross").on("click", function () {
+                $(".filter-overlay").fadeOut();
+            });
+
+
+            $(".filter-btn").on("click", function () {
+                console.log("clicked");
+                $(".filter-overlay").fadeIn();
+            });
+
+            $(".show").on("click", function () {
+            
+                $(".show").removeClass("active-show");
+                $(this).addClass("active-show");
+
+
+                if ($(".active-show").text() == "SHOW ALL EVERGREENS") {
+                    $(".card").hide();
+                    $('.card[value="' + "evergreen" + '"]').show();
+                    $(".filter-overlay").hide();
+
+                } else if ($(".active-show").text() == "SHOW ALL SEASONAL") {
+                    $(".card").hide();
+                    $('.card[value="' + "seasonal" + '"]').show();
+                    $(".filter-overlay").hide();
+
+                } else if ($(".active-show").text() == "SHOW ALL PACKAGING") {
+                    $(".card").hide();
+                    $('.card[value="' + "packaging" + '"]').show();
+                    $(".filter-overlay").hide();
+                } else {
+                    $(".card").show();
+                    $(".filter-overlay").hide();
+                }
+             });
+
         });</script>
 
 </body>

@@ -57,7 +57,7 @@
             @foreach (var seasonalFlower in Model.AllSeasonalFlowers)
             {
                 <div class="flower-container">
-                    <img class="flower-img" src="@seasonalFlower.ImgUrl" style="border-radius: 20px 20px 40px 20px;" />
+                    <div class="img-container"><img class="flower-img" src="@seasonalFlower.ImgUrl" /></div>
                     <h4>@seasonalFlower.Name</h4>
                 </div>
 
@@ -71,9 +71,9 @@
             @foreach (var lowFlowers in Model.AllLowFlowers)
             {
         <div class="flower-container">
-            <img class="flower-img" src="@lowFlowers.ImgUrl" style="border-radius: 20px 20px 40px 20px;" />
+            <div class="img-container"><img class="flower-img" src="@lowFlowers.ImgUrl" /></div>
             <h4>@lowFlowers.Name | <strong>@lowFlowers.Quantity</strong></h4>
-        
+
         </div>
 
             }

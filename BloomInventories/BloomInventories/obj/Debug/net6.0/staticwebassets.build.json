@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OHIG6qh7CXfuQ4ujaxfmXLUJzp7wl9jZoKcZtTannno=",
+  "Hash": "TinXkt+Yf+FyifKKKl4g3aoYkozynzR54FgGRIiP3r0=",
   "Source": "BloomInventories",
   "BasePath": "_content/BloomInventories",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/close.png",
+      "SourceId": "BloomInventories",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/",
+      "BasePath": "_content/BloomInventories",
+      "RelativePath": "images/close.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/close.png"
     },
     {
       "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/gallery1.png",

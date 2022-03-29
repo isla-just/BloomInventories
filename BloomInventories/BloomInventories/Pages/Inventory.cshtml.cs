@@ -28,7 +28,7 @@ namespace BloomInventories.Pages
             Console.WriteLine($"{name} should change to {quantity}");
             new Inventory().UpdateQuantity(name, quantity);
 
-            return Redirect($"./Inventory/?message={name} has been updated to {quantity}");
+            return Redirect($"./Inventory/?message=There are now {quantity} {name}");
         }
     }
 }
