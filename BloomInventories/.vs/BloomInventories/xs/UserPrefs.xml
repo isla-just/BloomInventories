@@ -1,7 +1,18 @@
 ﻿<Properties StartupConfiguration="{318D4CA2-1A93-4C47-9DA7-898EE675A0DE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BloomInventories/Pages/Create.cshtml">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="BloomInventories/Pages/Index.cshtml.cs">
     <Files>
-      <File FileName="BloomInventories/Pages/Create.cshtml" Line="102" Column="37" NotebookId="3" />
+      <File FileName="BloomInventories/Pages/Create.cshtml" Line="175" Column="32" />
+      <File FileName="BloomInventories/Models/RecipeBook.cs" Line="18" Column="99" />
+      <File FileName="BloomInventories/Pages/Create.cshtml.cs" Line="37" Column="1" />
+      <File FileName="BloomInventories/Services/Database.cs" Line="190" Column="1" />
+      <File FileName="BloomInventories/Models/Recipe.cs" Line="1" Column="1" />
+      <File FileName="BloomInventories/Pages/Dashboard.cshtml" Line="39" Column="26" />
+      <File FileName="BloomInventories/Pages/Dashboard.cshtml.cs" Line="14" Column="31" />
+      <File FileName="BloomInventories/Interfaces/Craftable.cs" Line="1" Column="1" />
+      <File FileName="BloomInventories/Pages/Inventory.cshtml" Line="70" Column="1" />
+      <File FileName="BloomInventories/Pages/Inventory.cshtml.cs" Line="34" Column="1" />
+      <File FileName="BloomInventories/Pages/Index.cshtml.cs" Line="23" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -32,10 +43,9 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.BloomInventories PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

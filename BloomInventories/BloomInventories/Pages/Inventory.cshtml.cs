@@ -12,6 +12,7 @@ namespace BloomInventories.Pages
     {
         public List<Flower> allFlowers = new List<Flower>();
         public string Message { get; set; } = string.Empty;
+        public int location = 1;
 
         public void OnGet(string message="")
         {
@@ -34,6 +35,7 @@ namespace BloomInventories.Pages
         public void OnPostLocation(int location_id)
         {
             Console.WriteLine(location_id);
+            location = location_id;
 
             allFlowers = new Inventory(location_id).Flowers;
 

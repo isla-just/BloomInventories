@@ -164,8 +164,73 @@ namespace BloomInventories.Services
 			cmd.Prepare();
 			cmd.ExecuteNonQuery();
 
-			//to do remove the ingredients
-			//UpdateBlockCountAfterCraft(materials);
+            //to do remove the ingredients
+            UpdateMaterialCountAfterCraft(materials, location_id);
+        }
+
+        public static void UpdateMaterialCountAfterCraft(List<string> materials, int location_id)
+        {
+            //connect to db
+            using var con = new MySqlConnection(serverConfiguration);
+            //open the connection
+            con.Open();
+
+            foreach (var material in materials)
+            {
+                if (material != "")
+                {
+                    int currentCount = GetCountOfMaterial(material, location_id);
+
+
+                    //setup out query
+                    string sql = "UPDATE materials SET quantity=@quantity WHERE name=@name AND location_id=@location_id";
+
+                    //executing our command
+                    using var cmd = new MySqlCommand(sql, con);
+
+                    //using placeholders and assigning them values
+                    cmd.Parameters.AddWithValue("@name", material);
+					cmd.Parameters.AddWithValue("@location_id", location_id);
+					cmd.Parameters.AddWithValue("@quantity", currentCount - 1);
+
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
+
+        //getting the count of blocks so that we can update them
+        public static int GetCountOfMaterial(string name, int location_id)
+		{
+			//connect to db
+			using var con = new MySqlConnection(serverConfiguration);
+			//open the connection
+			con.Open();
+
+			//setup out query
+			string sql = "SELECT quantity FROM materials WHERE name=@name AND location_id=@location_id";
+
+			//executing our command
+			using var cmd = new MySqlCommand(sql, con);
+
+			cmd.Parameters.AddWithValue("@name", name);
+			cmd.Parameters.AddWithValue("@location_id", location_id);
+
+			//creates an instance of our command result that can be read in c#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			int quantity = 0;
+
+			//loop through our returned data and do this for each entry
+			while (reader.Read())
+			{
+				//getting the current count
+				quantity = reader.GetInt32(0);
+			}
+
+			return quantity;
 		}
 
 		//getting all the seasonal flowers

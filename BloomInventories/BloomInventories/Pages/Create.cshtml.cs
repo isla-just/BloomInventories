@@ -10,6 +10,7 @@ namespace BloomInventories.Pages
 {
 	public class CreateModel : PageModel
     {
+        public int location = 1;
 
         public List<Recipe> allRecipes = new List<Recipe>();
         public bool MessageSuccess { get; set; }
@@ -24,16 +25,17 @@ namespace BloomInventories.Pages
         public IActionResult OnPostCraft(string name, int quantity, List<string> materials, int location_id)
         {
             Console.WriteLine($"{name} should change to {quantity+1}");
-            //new RecipeBook().CraftRecipe(name, quantity + 1, materials, location_id);
+            new RecipeBook(location_id).CraftRecipe(name, quantity + 1, materials, location_id);
 
 
-            return Redirect($"./Craft/?message=There are now {quantity} {name}");
+            return Redirect($"./Create/?message=There are now {quantity} {name}");
         }
 
 
         public void OnPostLocation(int location_id)
         {
             Console.WriteLine(location_id);
+            location = location_id;
 
             allRecipes = new RecipeBook(location_id).Recipes;
 

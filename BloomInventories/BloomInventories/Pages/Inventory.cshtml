@@ -69,10 +69,10 @@
 
             <form method="post" asp-page-handler="location" class="location-container">
 
-                <select class="location-picker" name="location_id" value="1">
-                    <option class="option1" value="1">Bloom Headquarters</option>
-                    <option class="option2" value="2">Peony Place</option>
-                    <option class="option3" value="3">Carnation Corner</option>
+                <select class="location-picker" name="location_id" value="@Model.location">
+                    <option class="option1" selected="@(Model.location == 1 ? true : false)" value="1">Bloom Headquarters</option>
+                    <option class="option2" selected="@(Model.location == 2 ? true : false)" value="2">Peony Place</option>
+                    <option class="option3" selected="@(Model.location == 3 ? true : false)" value="3">Carnation Corner</option>
                 </select>
 
                 <input class="btn confirm" type="submit" value="CHANGE" style="float:left;" />

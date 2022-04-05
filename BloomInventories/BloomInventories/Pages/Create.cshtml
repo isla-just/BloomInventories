@@ -38,6 +38,22 @@
         </div>
     </div>
 
+    <div class="craft-popup">
+        <div class="craft-container">
+            <div class="cross2"><img src="~/images/close.png" style="width:60%" /></div>
+            <div class="image-container"></div>
+            <div class="info-container">
+                <h1>Bouquet name</h1>
+                <h5>Evergreen</h5>
+                <div class="line-craft"></div>
+                <p>Peach ranunculus, pink poppy, pink sweet pea, peach carnation, white roses … read more</p>
+                <div class="create">LETS CREATE</div>
+            </div>
+
+        </div>
+        
+    </div>
+
     <div class="navigation">
         <div class="logo">BLOOM INVENTORIES</div>
         <div class="line"></div>
@@ -55,14 +71,23 @@
 
             <form method="post" asp-page-handler="location" class="location-container">
 
-                <select class="location-picker" name="location_id" value="1">
-                    <option class="option1" value="1">Bloom Headquarters</option>
-                    <option class="option2" value="2">Peony Place</option>
-                    <option class="option3" value="3">Carnation Corner</option>
+                <select class="location-picker" name="location_id" value="@Model.location">
+                    <option class="option1" selected="@(Model.location == 1 ? true : false)" value="1">Bloom Headquarters</option>
+                    <option class="option2" selected="@(Model.location == 2 ? true : false)" value="2">Peony Place</option>
+                    <option class="option3" selected="@(Model.location == 3 ? true : false)" value="3">Carnation Corner</option>
                 </select>
 
                 <input class="btn confirm" type="submit" value="CHANGE" style="float:left;" />
             </form>
+
+            @*<script>// Get the text field that we're going to track
+
+                localStorage.setItem("active", 3);
+                let activeclass = localStorage.getItem("active");
+                $(".Survivaltenttab").click(function () {
+                    localStorage.setItem("active", 3);
+
+                });</script>*@
 
             <a class="sub-nav" asp-area="" asp-page="/Index">Home</a>
             <a class="sub-nav" asp-area="" asp-page="/Inventory">Inventory</a>
@@ -92,17 +117,19 @@
                     </div>
 
 
-                    <div class="row" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    <div class="row">
 
-                        <p>
+                        <p class="ingredients">
                             @foreach (var material in recipe.Materials)
                             {
                                 if (material != "")
                                 {
-                                    @material 
+                                    @(material + ", ");
+                      
                                 }
                             }
-                       ,  </p>
+                            
+                        </p>
                     </div>
 
                     @{ if (recipe.IsCraftable())
@@ -118,7 +145,14 @@
                                 <div class="amount">@recipe.Quantity</div>
                                 <input class="done" type="submit" value="Create" />
                             </form>
-                        }
+                }
+                else
+                {
+                <div class="disabled" style="opacity:50%">
+                    <div class="amount">@recipe.Quantity</div>
+                    <input class="done" type="submit" value="Create" style="cursor:default"/>
+                </div>
+                }
                     }
 
                 </div><!--card-->
@@ -134,6 +168,11 @@
 
             $(".cross").on("click", function () {
                 $(".filter-overlay").fadeOut();
+            });
+
+
+            $(".cross2").on("click", function () {
+                $(".craft-popup").fadeOut();
             });
 
 

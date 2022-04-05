@@ -11,6 +11,8 @@ namespace BloomInventories.Pages
 {
 	public class DashboardModel : PageModel
     {
+        public int location =1;
+
         public List<Flower> AllSeasonalFlowers = new List<Flower>();
 
         public List<Flower> AllLowFlowers = new List<Flower>();
@@ -25,6 +27,7 @@ namespace BloomInventories.Pages
         {
             Console.WriteLine(location_id);
             Database.GetLowFlowers(location_id);
+            location = location_id;
 
             AllLowFlowers = Database.GetLowFlowers(location_id);
             AllSeasonalFlowers = Database.GetAllSeasonal();
