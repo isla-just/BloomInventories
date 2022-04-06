@@ -4,7 +4,57 @@
     ViewData["Title"] = "Home page";
 }
 
-<a class="nav-link" asp-area="" asp-page="/Dashboard">Dashboard</a>
+<script>//jquery
+
+    $(function () {
+        $(".login-overlay").hide();
+
+        $(".cross").on("click", function () {
+            $(".login-overlay").fadeOut();
+            $("body").css({ "height": "auto", "overflow": "auto" });
+        });
+
+        $(".nav-link").on("click", function () {
+            $(".login-overlay").fadeIn();
+            $("body").css({ "height": "100vh", "overflow": "hidden" });
+        });
+
+        setTimeout(function () {
+            $('.notification').fadeOut('slow');
+        }, 5000);
+
+        @*$(".notification").hide();*@
+
+    });
+
+    @*localStorage.setItem("active", "logged in");
+    let activeclass = localStorage.getItem("active");
+
+    $(".Survivaltenttab").click(function () {
+        localStorage.setItem("active", 3);
+    });*@
+
+
+
+    </script>
+
+<div class="login-overlay">
+    <div class="login-popup">
+        <div class="cross"><img src="~/images/close.png" style="width:60%" /></div>
+
+        @foreach (var employee in Model.AllEmployees)
+        {
+            <div class="img-container"><img class="flower-img" src="~/verifyImg/@employee.FlowerImg" style="width: 100%;" /></div>
+            <h3>WHAT IS THE NAME OF THIS FLOWER?</h3>
+
+            <form method="post" asp-page-handler="verify">
+                <input class="flowerName" placeholder="Name of flower" type="text" name="verifyInput" />
+                <button class="done">Verify</button>
+            </form>
+        }
+    </div>
+</div>
+<a class="nav-link">Employee login</a>
 
 <div class="header1" style="width: 100%; height: 90vh;">
     <div class="arch" style="width: 40%; height: 90vh; float:left">
@@ -44,21 +94,50 @@
         </div>
         <div class="circle"></div>
     </div>
+</div>
+
+
+<div class="test-block2">
+    <h1>Want weekly bouquets?</h1>
+    <h4>ENTER YOUR EMAIL AND WE WILL BE IN TOUCH</h4>
+
+
+</div>
+
+<form class="signup-form" method="post" asp-page-handler="subscribe">
+    <input class="email" placeholder="YOUR EMAIL" type="text" name="email" />
+    <input class="button" type="submit" value="SUBSCRBE" />
+</form>
+
+<div class="test-block3">
+    <div class="logo2"><img src="~/images/Bloom.png" style="width:90%" /></div>
+    <div class="third">
+        <p>MORE ABOUT US</p>
+        <p>OUR LOCATIONS</p>
+        <p>SUBSCRIPTIONS</p>
+
     </div>
+    <div class="third" style="margin-left:20px">
+        <p>INSTAGRAM</p>
+        <p>FACEBOOK</p>
+        <p>PINTEREST</p>
+    </div>
+    <div class="third" style="margin-left:-20px">
+        <p>GALLERY</p>
+        <p>EMPLOYEE LOGIN</p>
+        <p>GET IN CONTACT</p>
+    </div>
+</div>
+
+<div class="gap"></div>
+@{
+    if (Model.MessageSuccess == false)
+    {
 
 
-    <div class="test-block2">
-        <h1>Want weekly bouquets?</h1>
-        <h4>ENTER YOUR EMAIL AND WE WILL BE IN TOUCH</h4>
-        <div class="email-row">
-            <input class="email" placeholder="YOUR EMAIL" type="text"/>
-            <div class="button">SUBSCRIBE</div>
+        <div class="notification">
+            YOU HAVE NOT IDENTIFIED THE FLOWER CORRECTLY
         </div>
-    </div>
-    <div class="test-block3">
-        <div class="logo2"><img src="~/images/Bloom.png" style="width:100%" /></div>
-        <div class="third"></div>
-        <div class="third"></div>
-        <div class="third"></div>
-    </div>
+    }
 
+}

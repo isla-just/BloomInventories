@@ -19,6 +19,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
 a {
     text-decoration: none;
 }
@@ -84,7 +88,7 @@ a {
 
 
 .location-container {
-    margin-left: 60px;
+    margin-left: 53px;
     margin-top: 25px;
     width: 45%;
 }
@@ -130,14 +134,26 @@ a {
     margin-top: 40px;
 }
 
+.blokkie {
+    background-color: #F7F7F1;
+    border-radius: 20px;
+    width: 30%;
+    height: 140px;
+    margin-left: 63px;
+    float: left;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
 h1 {
     color: #2E3D30;
-    width: 80%;
-    margin-left: 60px;
+    width: 52%;
+    margin-left: 38px;
     margin-top: 40px;
     float: left;
     font-family: 'Antic Didone', serif;
-    font-size: 50px;
+    font-size: 40px;
     line-height: 65px;
 
 }
@@ -204,13 +220,16 @@ h3 {
 
 .weekly {
     width: 80%;
-    height: 430px;
+    height: 260px;
     margin-top:70px;
     margin-left:30px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
 }
 
 .weeklyHeader {
-    margin-top: -140px;
+    margin-top: 30px;
     margin-left: 30px;
     color: #4D593F;
     letter-spacing:2px;
@@ -221,6 +240,13 @@ h3 {
     margin-left: 30px;
     color: #4D593F;
     margin-top:8px;
+}
+
+.weekly img {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
 }
 
 .weeklyP {
@@ -240,10 +266,12 @@ h3 {
     width: 70%;
     color: #2E3D30;
     letter-spacing: 2px;
-    padding: 10px;
+    padding: 12px;
     margin-top: 20px;
     font-size:12px;
     font-weight:500;
+    border:none;
+    cursor:pointer;
 }
 
 .subs {

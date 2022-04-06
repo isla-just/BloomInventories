@@ -10,6 +10,8 @@
 
 body {
     background-color: #FDFCF7;
+    width:100%;
+    overflow-x:hidden;
 }
 
 .html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, .row, div, a, .container-fluid, .row, .container, img, form {
@@ -26,16 +28,18 @@ a {
         text-decoration: none;
     }
 
+.home-container {
+    width:100%;
+    overflow:hidden;
+}
 /*    //home page*/
-
 .logo {
     color: #2E3D30;
-    font-weight:300;
-    font-size:15px;
-    letter-spacing:3px;
-
-    margin-top:25px;
-    margin-left:45px;
+    font-weight: 300;
+    font-size: 15px;
+    letter-spacing: 3px;
+    margin-top: 25px;
+    margin-left: 45px;
 }
 
 .title {
@@ -178,7 +182,7 @@ a {
 }
 
 .test-block2 {
-    width 100%;
+    width: 100%;
     height: 90vh;
     border-radius: 0px 0px 200px 200px;
     background-color: #546757;
@@ -207,21 +211,26 @@ a {
 
     }
 
-.email-row {
-    width:78%;
-    margin-left:150px;
-    margin-top:50px;
+.signup-form {
+    height: 150px;
+    margin-top: -290px;
+    width: 78%;
+    margin-left: 150px;
+    position: absolute;
+    z-index: 100;
 }
 
 .email {
-    margin-top:60px;
-    width:80%;
+    margin-top: 60px;
+    width: 80%;
     background-color: #546757;
-    border:none;
+    border: none;
     border-bottom: 1px solid white;
     padding: 15px;
     color: white;
-    float:left;
+    float: left;
+    position: relative;
+    z-index: 99;
 }
 
 .button {
@@ -232,20 +241,37 @@ a {
     padding: 15px;
     color: white;
     float: left;
-    text-align:center;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
 }
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
+    .button:hover {
+        background-color: #FDFCF7;
+        border: none;
+        padding: 15px;
+        color: #546757;
+
+    }
 
 .email::placeholder {
     color: white;
 }
-    .test-block3 {
-    width 100%;
+
+.test-block3 {
+    width: 100%;
     height: 60vh;
     background-color: #2E3D30;
     margin-top: -200px;
     z-index: -2;
     position: relative;
-    padding-top:300px;
+    padding-top: 300px;
+    margin-bottom:-16px;
 }
 
 .meet {
@@ -290,13 +316,111 @@ a {
 
 .logo2 {
     margin-left: 150px;
-    width:20%;
-    height:auto;
-    float:left;
+    margin-right: 50px;
+    width: 20%;
+    height: auto;
+    float: left;
 }
 
 .third {
     width: 20%;
     float:left;
-    background-color:red;
+    margin-top:-10px;
+    margin-bottom:0px;
+}
+
+    .third p {
+        color:white;
+        letter-spacing:2px;
+        margin-top:10px;
+        font-size: 15px;
+    }
+
+.login-overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: #00000030;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.login-popup {
+    background-color: #FDFCF7;
+    width:40%;
+    height:70vh;
+    margin-left:30%;
+    margin-top:15vh;
+    border-radius: 200px 50px 50px 50px;
+    padding:50px;
+}
+
+.cross {
+    width:30px;
+    height:30px;
+    float:right;
+}
+
+
+.img-container {
+    margin-left: 27%;
+    margin-top: 40px;
+    width: 200px;
+    height: 200px;
+    background-color: #C2C6B1;
+    border-radius: 50%;
+}
+
+.login-popup h3 {
+    color:#2E3D30;
+    text-align:center;
+    margin-top:50px;
+    font-size:20px;
+    font-weight:500;
+    letter-spacing:3px;
+}
+
+.flowerName {
+    margin-top: 50px;
+    width: 100%;
+    background-color: #E3E4D8;
+    padding: 16px;
+    border-radius: 10px;
+    color: #546757;
+    border: none;
+    float: left;
+    color: #2E3D30;
+}
+
+.flowerName::placeholder {
+    color: #2E3D3060;
+}
+
+.done {
+    margin-top: -52px;
+    width: 30%;
+    background-color: #2E3D30;
+    padding: 12px;
+    border-radius: 10px;
+    color: #546757;
+    border: none;
+    float: right;
+    color: #E3E4D8;
+    margin-right:4px;
+}
+
+.notification {
+    width: 36%;
+    position: absolute;
+    top: 50px;
+    left: 32%;
+    z-index: 5;
+    background-color: #546757;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    height: auto;
+    padding: 20px;
+    border-radius: 0px 50px 0px 50px;
 }

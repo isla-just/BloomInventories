@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="~/BloomInventories.styles.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -45,7 +46,7 @@
                     <option class="option3" selected="@(Model.location == 3 ? true : false)" value="3">Carnation Corner</option>
                 </select>
 
-                <input class="btn confirm" type="submit" value="CHANGE" style="float:left;" />
+                <input class="btn confirm" type="submit" value="Change" style="float:left;" />
             </form>
 
             <a class="sub-nav" asp-area="" asp-page="/Index">Home</a>
@@ -54,7 +55,10 @@
 
         </div>
 
-        <h1>The most fresh floral <stong>creations</stong> happen here...</h1>
+        <div class="blokkie">
+            <h3>Seasonal Flowers</h3>
+        </div>
+        <h1>The most fresh floral creations happen here</h1>
 
         <div class="seasonal">
             <h3>Seasonal Flowers</h3>
@@ -88,23 +92,47 @@
 
     <div style="width: 25%; height: 100vh; float: left; background-color: #F0F1EB; padding:20px">
         <h3 class="logo" style="color: #2E3D30; margin-left:35px; margin-top:20px; font-size:15px">BOUQUET OF THE WEEK</h3>
-        <div class="weekly">
-            <img src="https://i.pinimg.com/564x/37/82/9e/37829e4b9df9edb27f48e7a823248947.jpg" style="width:100%; border-radius: 150px 150px 0px 0px;" />
-        </div>
 
-        <h5 class="weeklyHeader">Peach perfect</h5>
-        <h6 class="weeklyCat">floral</h6>
-        <p class="weeklyP">Orange roses, peach ranunculus, mini orange roses, peach carnation, baby’s breath, eucalyptus, brown tissue paper, pink ribbon, white ribbon</p>
+        @foreach (var random in Model.RandomBouquet)
+        {
+            <div class="weekly">
+                <img src="@random.ImgUrl" style="width:100%; border-radius: 150px 150px 0px 0px;" />
+            </div>
 
-        <div class="create">CREATE NOW</div>
+            <h5 class="weeklyHeader">@random.Name</h5>
+            <h6 class="weeklyCat">@random.Category</h6>
+            <p class="weeklyP">
+                @foreach (var material in random.Materials)
+                {
+                    if (material != "")
+                    {
+                        @(material + ", ");
+
+                    }
+                }
+            </p>
+
+        }
+
+        <div class="create">NEW BOUQUET</div>
 
         <div class="subs">
-            <h2>41</h2>
+            <h2>@Model.SubscriberCount</h2>
             <div class="line2"></div>
             <h4>Weekly <br />subscriptions</h4>
         </div>
     </div>
 
+    <script>
+
+        $(function () {
+            $(".create").on("click", function () {
+                console.log("clicked");
+                location.reload(true);
+            });
+        });
+
+    </script>
 
 </body>
 </html>

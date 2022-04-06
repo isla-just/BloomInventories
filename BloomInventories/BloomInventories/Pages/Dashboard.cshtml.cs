@@ -16,11 +16,16 @@ namespace BloomInventories.Pages
         public List<Flower> AllSeasonalFlowers = new List<Flower>();
 
         public List<Flower> AllLowFlowers = new List<Flower>();
+        public int SubscriberCount = 0;
+
+        public List<Recipe> RandomBouquet = new List<Recipe>();
 
         public void OnGet()
         {
             AllSeasonalFlowers = Database.GetAllSeasonal();
             AllLowFlowers = Database.GetLowFlowers(1);
+            SubscriberCount = Database.GetSubscriberCount();
+            RandomBouquet = Database.GetRandomBouquet();
         }
 
         public void  OnPostLocation(int location_id)
