@@ -55,11 +55,11 @@ public class IndexModel : PageModel
            Database.NewSubscriber(email);
 
 
-            return Redirect($"./Index/?message=you will be sent am email shortly");
+            return Redirect($"./Index/?message=subscribed");
         }
         else
         {
-            return Redirect("./Index/?message=you've already subscribed");
+            return Redirect("./Index/?message=already subscribed");
         }
 
 

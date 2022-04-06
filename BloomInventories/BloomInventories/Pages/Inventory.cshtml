@@ -29,11 +29,12 @@
     @{
         if (Model.Message != "")
         {
+
             <div class="overlay">
                 <div class="card-popup">
                     <div class="top-illustration"><img src="~/images/illustration.png" style="width: 100%; margin-top: 30px;" /></div>
                     <h5>STOCK TAKE</h5>
-                    <p>@Model.Message <br />at Bloom Headquarters</p>
+                    <p>@Model.Message </p>
                     <div class="close">DONE</div>
                 </div>
             </div>
@@ -59,7 +60,6 @@
         <a class="nav-link activeH" asp-area="" asp-page="/Dashboard"><h3>Dashboard</h3></a>
         <a class="nav-link" asp-area="" asp-page="/Inventory"><h3><strong>Inventory</strong></h3></a>
         <a class="nav-link" asp-area="" asp-page="/Create"><h3>Create</h3></a>
-        <a class="nav-link" asp-area="" asp-page="/Dashboard"><h3>Sales Portal</h3></a>
 
     </div>
 

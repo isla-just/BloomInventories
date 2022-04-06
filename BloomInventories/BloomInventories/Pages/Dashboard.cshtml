@@ -16,11 +16,14 @@
     <title>@ViewData["Title"] - BloomInventories</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+    <script src="circletype.min.js"></script>
     <link rel="stylesheet" href="~/BloomInventories.styles.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Licorice&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -31,7 +34,7 @@
         <a class="nav-link activeH" asp-area="" asp-page="/Dashboard"><h3><strong>Dashboard</strong></h3></a>
         <a class="nav-link" asp-area="" asp-page="/Inventory"><h3>Inventory</h3></a>
         <a class="nav-link" asp-area="" asp-page="/Create"><h3>Create</h3></a>
-        <a class="nav-link" asp-area="" asp-page="/Dashboard"><h3>Sales Portal</h3></a>
+
 
     </div>
 
@@ -55,12 +58,9 @@
 
         </div>
 
-        <div class="blokkie">
-            <h3>Seasonal Flowers</h3>
-        </div>
         <h1>The most fresh floral creations happen here</h1>
 
-        <div class="seasonal">
+        <div class="seasonal1">
             <h3>Seasonal Flowers</h3>
 
             @foreach (var seasonalFlower in Model.AllSeasonalFlowers)
@@ -74,7 +74,7 @@
 
         </div><!--seasonal container-->
 
-        <div class="seasonal" style="margin-top:30px">
+        <div class="seasonal2" style="margin-top:30px">
             <h3>Stock running low</h3>
 
             @foreach (var lowFlowers in Model.AllLowFlowers)
@@ -123,6 +123,8 @@
         </div>
     </div>
 
+    <h4 id="curved">@Model.BouquetCount bouquets here</h4>
+
     <script>
 
         $(function () {
@@ -130,7 +132,20 @@
                 console.log("clicked");
                 location.reload(true);
             });
+
         });
+
+        const circleType = new CircleType(document.getElementById('curved'));
+
+
+        circleType.radius(200);
+
+        const splitter = new GraphemeSplitter();
+
+        new CircleType(
+            document.getElementById('curved'),
+            splitter.splitGraphemes.bind(splitter)
+        );
 
     </script>
 

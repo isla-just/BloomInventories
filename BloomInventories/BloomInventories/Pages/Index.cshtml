@@ -23,20 +23,112 @@
             $('.notification').fadeOut('slow');
         }, 5000);
 
-        @*$(".notification").hide();*@
+        var images = [
+            "https://i.pinimg.com/564x/12/73/2b/12732b243d9dc773f323f8429a1d5f9b.jpg",
+            "https://i.pinimg.com/564x/9a/37/7a/9a377ad2ea497fa44ebf72405a6c9410.jpg",
+            "https://i.pinimg.com/564x/a4/c2/ac/a4c2ac0a6718c1cfea5cd194b84ecc94.jpg",
+            "https://i.pinimg.com/564x/37/82/9e/37829e4b9df9edb27f48e7a823248947.jpg",
+            "https://i.pinimg.com/736x/09/33/38/0933381a02e5645887f780baae8a733e.jpg",
+            "https://i.pinimg.com/564x/c0/db/b4/c0dbb4c26e7fb6aceb61c448f2e3f61c.jpg"
+        ]
 
+        var images2 = [
+            "https://i.pinimg.com/564x/25/30/94/253094a8d140e3e4292e5a3d4a2b31cf.jpg",
+            "https://i.pinimg.com/564x/ae/5e/97/ae5e97547488fcd87351676f59c20b63.jpg",
+            "https://i.pinimg.com/564x/a4/c2/ac/a4c2ac0a6718c1cfea5cd194b84ecc94.jpg",
+            "https://i.pinimg.com/564x/3e/e2/ff/3ee2ff06ea966d68dcd510c0d6ee0bd6.jpg",
+            "https://i.pinimg.com/564x/21/ef/57/21ef578f082343ad1a08d1a221b917b1.jpg"
+        ]
+
+        var current = 1;
+        var current2 = 1;
+
+        setInterval(function () {
+
+            $('.block4').attr('src', images[current]);
+            current = (current < images.length - 1) ? current + 1 : 0;
+
+
+            $('.arch2').attr('src', images2[current2]);
+            current2 = (current2 < images2.length - 1) ? current2 + 1 : 0;
+
+        }, 5000); /*1000 = 1 sec*/
+//animating my header
+
+        @*animateProgress();*@
+
+        $(".headerImg").hide();
+        $(".title").hide();
+
+        $(".titleOne").fadeIn();
+        $(".titleOne").css("margin-left", "0px");
+
+        $(".img1").fadeIn();
+        $(".img1").css("margin-left", "0px");
+
+
+        setInterval(function () {
+
+            // first step
+
+            if ($(".dot1").hasClass("active-index")) {
+                $(".dot1").removeClass("active-index");
+                //changes index pt
+
+                $(".dot2").addClass("active-index")
+
+                //adding content 
+                $(".title").hide();
+                $(".headerImg").hide();
+
+                $(".titleTwo").fadeIn();
+                $(".titleTwo").css("margin-left", "0px");
+
+                $(".img2").fadeIn();
+                $(".img2").css("margin-left", "0px");
+
+
+                //second step
+
+            } else if ($(".dot2").hasClass("active-index")) {
+                $(".dot2").removeClass("active-index");
+                //changes index pt
+
+                $(".dot3").addClass("active-index");
+
+                $(".title").hide();
+                $(".headerImg").hide();
+
+                $(".titleThree").fadeIn();
+                $(".titleThree").css("margin-left", "0px");
+
+                $(".img3").fadeIn();
+                $(".img3").css("margin-left", "0px");
+
+
+                // third step
+
+            } else if ($(".dot3").hasClass("active-index")) {
+                $(".dot3").removeClass("active-index");
+
+                $(".dot1").addClass("active-index");
+
+                $(".title").hide();
+                $(".headerImg").hide();
+
+                $(".titleOne").fadeIn();
+                $(".titleOne").css("margin-left", "0px");
+
+                $(".img1").fadeIn();
+                $(".img1").css("margin-left", "0px");
+
+
+            }//end of if else
+
+        }, 6000);//end of set interval
     });
 
-    @*localStorage.setItem("active", "logged in");
-    let activeclass = localStorage.getItem("active");
-
-    $(".Survivaltenttab").click(function () {
-        localStorage.setItem("active", 3);
-    });*@
-
-
-
-    </script>
+</script>
 
 <div class="login-overlay">
     <div class="login-popup">
@@ -54,32 +146,44 @@
         }
     </div>
 </div>
+
 <a class="nav-link">Employee login</a>
 
 <div class="header1" style="width: 100%; height: 90vh;">
-    <div class="arch" style="width: 40%; height: 90vh; float:left">
-        <img src="~/images/header.png" style="width:80%; margin-top:8vh; margin-left:130px" />
+    <div class="arch">
+
+        <img class="headerImg img1" src="~/images/header1.jpg" />
+        <img class="headerImg img2" src="~/images/header2.jpg" />
+        <img class="headerImg img3" src="~/images/header3.jpg" />
     </div>
-    <h1 class="title">Providing fresh flowers for life’s most important moments.</h1>
+
+    <div class="headline">
+        <h1 class="title titleOne">Providing fresh flowers for life’s most important moments.</h1>
+        <h1 class="title titleTwo">Experts in the art of flora.</h1>
+        <h1 class="title titleThree">Flowers designed with your thoughts in mind.</h1>
+    </div>
+
 
     <div class="index-container">
-        <div class="active-index index-pt"></div>
-        <div class="index-pt"></div>
-        <div class="index-pt"></div>
+        <div class="active-index index-pt dot1"></div>
+        <div class="index-pt dot2"></div>
+        <div class="index-pt dot3"></div>
     </div>
 
     <h3 class="join">JOIN US</h3>
 </div>
 
-<div style="width:100%; height:160vh; margin-top:80px;">
-    <div class="block1">SEED <br /> PACKS</div>
+<div data-aos="fade-up" style="width:100%; height:160vh; margin-top:80px;" >
+    <div class="block1">FRESH <br /> FLOWERS</div>
     <div class="block2"><img src="~/images/gallery1.png" style="width:100%" /></div>
     <div class="block3">SEASONAL <br />BOUQUETS</div>
     <div class="block1" style="background-color: #EDC9B5">WEEKLY <br />BOUQUET <br />SUBSCRIPTIONS</div>
-    <div class="block4"><img src="~/images/gallery3.png" style="width: 100%; border-radius: 50%;" /></div>
+
+    <img class="block4" src="" style="border-radius: 50%;" />
     <div class="block5"><img src="~/images/gallery2.png" style="width: 100%; border-radius: 0px 230px 0px 230px;" /></div>
     <div class="block6"><img src="~/images/gallery4.png" style="width: 100%; border-radius: 300px;" /></div>
 </div>
+
 
 <div class="test-block">
     <div style="width:50%; float:left;">
@@ -89,10 +193,8 @@
 
     <div style="width:50%; float:left;">
 
-        <div class="arch2">
-            <img src="~/images/location.png" style="width:100%;" />
-        </div>
-        <div class="circle"></div>
+        <img class="arch2" src="">
+<h3 class="find">find us where <br />the flowers are</h3>
     </div>
 </div>
 
@@ -138,6 +240,26 @@
         <div class="notification">
             YOU HAVE NOT IDENTIFIED THE FLOWER CORRECTLY
         </div>
+    }
+
+    if (Model.Message == "subscribed")
+    {
+
+        <div class="notification">
+            THANK YOU FOR SUBSCRIBING
+        </div>
+    }
+    else if (Model.Message == "already subscribed")
+    {
+
+
+        <div class="notification">
+            LOOKS LIKE YOU ALREADY HAVE A SUBSCRIPTION
+        </div>
+    }
+    else
+    {
+        Console.WriteLine("nothing");
     }
 
 }

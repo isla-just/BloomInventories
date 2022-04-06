@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "A5Z/1Bfm3pn0Re645hNGMTn8hXNR2Pjft2ZNazbH+UM=",
+  "Hash": "LpFmDv9UviHx10piUtt0MEo+0WwF+oYeT5SVxnqUGeg=",
   "Source": "BloomInventories",
   "BasePath": "_content/BloomInventories",
   "Mode": "Default",
@@ -238,12 +238,12 @@
       "OriginalItemSpec": "wwwroot/images/gallery4.png"
     },
     {
-      "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/header.png",
+      "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/header1.jpg",
       "SourceId": "BloomInventories",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/",
       "BasePath": "_content/BloomInventories",
-      "RelativePath": "images/header.png",
+      "RelativePath": "images/header1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -252,7 +252,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/header.png"
+      "OriginalItemSpec": "wwwroot/images/header1.jpg"
+    },
+    {
+      "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/header2.jpg",
+      "SourceId": "BloomInventories",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/",
+      "BasePath": "_content/BloomInventories",
+      "RelativePath": "images/header2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/header2.jpg"
+    },
+    {
+      "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/header3.jpg",
+      "SourceId": "BloomInventories",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/",
+      "BasePath": "_content/BloomInventories",
+      "RelativePath": "images/header3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/header3.jpg"
     },
     {
       "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/illustration.png",

@@ -259,6 +259,7 @@ a {
     box-shadow: 0px 6px 48px 0px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0px 6px 48px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: 0px 6px 48px 0px rgba(0,0,0,0.3);
+    padding:50px;
 }
 
     .card-popup h5 {
@@ -272,7 +273,8 @@ a {
 
     .top-illustration {
         width: 80%;
-        margin-left: 10%;
+        margin-left: 8%;
+        margin-top:-20px;
     }
 
 .card-popup p {

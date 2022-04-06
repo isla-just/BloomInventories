@@ -61,7 +61,7 @@
         <a class="nav-link activeH" asp-area="" asp-page="/Dashboard"><h3>Dashboard</h3></a>
         <a class="nav-link" asp-area="" asp-page="/Inventory"><h3>Inventory</h3></a>
         <a class="nav-link" asp-area="" asp-page="/Create"><h3><strong>Create</strong></h3></a>
-        <a class="nav-link" asp-area="" asp-page="/Dashboard"><h3>Sales Portal</h3></a>
+
 
     </div>
 
@@ -101,61 +101,62 @@
             @foreach (var recipe in Model.allRecipes)
             {
 
-                <div class="card" value="@recipe.Category">
+            <div class="card" value="@recipe.Category">
 
-                    <div class="row">
+                <div class="row">
 
-                        <div class="img-container"><img class="flower-img" src="@recipe.ImgUrl" /></div>
+                    <div class="img-container"><img class="flower-img" src="@recipe.ImgUrl" /></div>
 
-                        <div style="float:left; width:50%">
-                            <h3>
-                                @recipe.Name
-                            </h3>
-                            <h5>@recipe.Category</h5>
-                        </div>
-
+                    <div style="float:left; width:50%">
+                        <h3>
+                            @recipe.Name
+                        </h3>
+                        <h5>@recipe.Category</h5>
                     </div>
 
-
-                    <div class="row">
-
-                        <p class="ingredients">
-                            @foreach (var material in recipe.Materials)
-                            {
-                                if (material != "")
-                                {
-                                    @(material + ", ");
-                      
-                                }
-                            }
-                            
-                        </p>
-                    </div>
-
-                    @{ if (recipe.IsCraftable())
-                        {
-                            <form method="post" asp-page-handler="craft" asp-route-name="@recipe.Name"
-                                  asp-route-quantity="@recipe.Quantity" asp-route-location_id="@recipe.location_id">
-                                @{
-                                    foreach (var material in recipe.Materials)
-                                    {
-                                        <input type="hidden" name="materials[]" value="@material" />
-                                    }
-                                }
-                                <div class="amount">@recipe.Quantity</div>
-                                <input class="done" type="submit" value="Create" />
-                            </form>
-                }
-                else
-                {
-                <div class="disabled" style="opacity:50%">
-                    <div class="amount">@recipe.Quantity</div>
-                    <input class="done" type="submit" value="Create" style="cursor:default"/>
                 </div>
-                }
-                    }
 
-                </div><!--card-->
+
+                <div class="row">
+
+                    <p class="ingredients">
+                        @foreach (var material in recipe.Materials)
+                        {
+                            if (material != "")
+                            {
+                                @(material + ", ");
+
+                            }
+                        }
+
+                    </p>
+                </div>
+
+
+                @{ if (recipe.IsCraftable())
+                {
+                    <form method="post" asp-page-handler="craft" asp-route-name="@recipe.Name"
+                          asp-route-quantity="@recipe.Quantity" asp-route-location_id="@recipe.location_id">
+                        @{
+                            foreach (var material in recipe.Materials)
+                            {
+                                <input type="hidden" name="materials[]" value="@material" />
+                            }
+                        }
+                        <div class="amount">@recipe.Quantity</div>
+                        <input class="done" type="submit" value="Create" />
+                    </form>
+        }
+        else
+        {
+        <div class="disabled" style="opacity:50%">
+            <div class="amount">@recipe.Quantity</div>
+            <input class="done" type="submit" value="Create" style="cursor:default"/>
+        </div>
+        }
+            }
+
+            </div><!--card-->
             }<!--end of for each-->
 
         </div>
@@ -209,7 +210,29 @@
                     $(".card").show();
                     $(".filter-overlay").hide();
                 }
-             });
+            });
+
+            $(".craft-popup").hide();
+
+            $(".done").on("click", function () {
+                $(".craft-popup").fadeIn();
+                var bouquetName = $(this).parent().val();
+                console.log(bouquetName);
+            });
+
+            @*$(".confirm").on("click", function () {
+                if ($(".location-picker").val() == 1) {
+                  
+                     localStorage.setItem("active", 1);
+                  }
+            });*@
+   
+             @*localStorage.setItem("active", 1);
+            let activeclass = localStorage.getItem("active");
+
+            $(".Survivaltenttab").click(function () {
+                localStorage.setItem("active", 3);
+            });*@
 
         });</script>
 

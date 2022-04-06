@@ -285,7 +285,7 @@ namespace BloomInventories.Services
 			con.Open();
 
 			//setup out query
-			string sql = "SELECT * FROM materials WHERE quantity<10 AND location_id=@location_id";
+			string sql = "SELECT * FROM materials WHERE quantity<10 AND location_id=@location_id ORDER BY quantity ASC ";
 
 			using var cmd = new MySqlCommand(sql, con);
 			cmd.Parameters.AddWithValue("@location_id", location_id);
@@ -617,6 +617,36 @@ namespace BloomInventories.Services
 
 			return results2;
 		}//getting all flowers list
+
+		//counting all of the flowers in a location
+		//getting all the recipes
+		public static int CountRecipes(int location_id)
+		{
+			using var con = new MySqlConnection(serverConfiguration);
+			//open the connection
+			con.Open();
+
+			//setup out query
+			string sql = "SELECT SUM(quantity) FROM bouquets WHERE location_id=@location_id";
+			//executing our command
+			using var cmd = new MySqlCommand(sql, con);
+
+			cmd.Parameters.AddWithValue("@location_id", location_id);
+
+			//creates an instance of our command result that can be read in c#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			int quantity = 0;
+
+			//loop through our returned data and do this for each entry
+			while (reader.Read())
+			{
+				//getting the current count
+				quantity = reader.GetInt32(0);
+			}
+
+			return quantity;
+		}
 	}
 }
 

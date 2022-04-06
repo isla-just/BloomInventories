@@ -26,10 +26,25 @@ namespace BloomInventories.Pages
         //to update and call the post method
         public IActionResult OnPostUpdate(string name, int quantity, int location_id)
         {
+
+            var location_name = "";
+
+            if (location_id == 1)
+            {
+                location_name = "Bloom Headquarters";
+            }else if (location_id == 2)
+            {
+                location_name = "Peony Place";
+            }
+            else
+            {
+                location_name = "Carnation Corner";
+            }
+
             Console.WriteLine($"{name} should change to {quantity}");
             new Inventory(location_id).UpdateQuantity(name, quantity, location_id);
 
-            return Redirect($"./Inventory/?message=There are now {quantity} {name}");
+            return Redirect($"./Inventory/?message=There are now {quantity} {name} at {location_name}");
         }
 
         public void OnPostLocation(int location_id)

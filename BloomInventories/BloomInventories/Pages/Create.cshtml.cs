@@ -15,10 +15,11 @@ namespace BloomInventories.Pages
         public List<Recipe> allRecipes = new List<Recipe>();
         public bool MessageSuccess { get; set; }
 
-        public void OnGet(bool success = true)
+        public void OnGet(int location_id, bool success = true)
         {
             allRecipes = new RecipeBook(1).Recipes;
             MessageSuccess = success;
+            location =location_id;
         }
 
 
@@ -26,7 +27,7 @@ namespace BloomInventories.Pages
         {
             Console.WriteLine($"{name} should change to {quantity+1}");
             new RecipeBook(location_id).CraftRecipe(name, quantity + 1, materials, location_id);
-
+            location = location_id;
 
             return Redirect($"./Create/?message=There are now {quantity} {name}");
         }
@@ -41,6 +42,7 @@ namespace BloomInventories.Pages
 
             //return RedirectToPage("./Dashboard");
         }
+
 
     }
 }

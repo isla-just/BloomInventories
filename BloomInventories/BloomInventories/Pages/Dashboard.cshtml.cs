@@ -17,6 +17,7 @@ namespace BloomInventories.Pages
 
         public List<Flower> AllLowFlowers = new List<Flower>();
         public int SubscriberCount = 0;
+        public int BouquetCount = 0;
 
         public List<Recipe> RandomBouquet = new List<Recipe>();
 
@@ -26,13 +27,16 @@ namespace BloomInventories.Pages
             AllLowFlowers = Database.GetLowFlowers(1);
             SubscriberCount = Database.GetSubscriberCount();
             RandomBouquet = Database.GetRandomBouquet();
+            BouquetCount = Database.CountRecipes(1);
         }
 
         public void  OnPostLocation(int location_id)
         {
-            Console.WriteLine(location_id);
             Database.GetLowFlowers(location_id);
+            BouquetCount = Database.CountRecipes(location_id);
             location = location_id;
+            SubscriberCount = Database.GetSubscriberCount();
+            RandomBouquet = Database.GetRandomBouquet();
 
             AllLowFlowers = Database.GetLowFlowers(location_id);
             AllSeasonalFlowers = Database.GetAllSeasonal();
