@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LpFmDv9UviHx10piUtt0MEo+0WwF+oYeT5SVxnqUGeg=",
+  "Hash": "DEo13arjeP3fNOuXjDKNxqVABmIZZcyc6NWF5fCXAu4=",
   "Source": "BloomInventories",
   "BasePath": "_content/BloomInventories",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/obj/Debug/net6.0/scopedcss/projectbundle/BloomInventories.bundle.scp.css"
+    },
+    {
+      "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/.DS_Store",
+      "SourceId": "BloomInventories",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/",
+      "BasePath": "_content/BloomInventories",
+      "RelativePath": ".DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/.DS_Store"
     },
     {
       "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/css/create.css",
@@ -168,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/close.png"
+    },
+    {
+      "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/favicon.png",
+      "SourceId": "BloomInventories",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/",
+      "BasePath": "_content/BloomInventories",
+      "RelativePath": "images/favicon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/favicon.png"
     },
     {
       "Identity": "/Users/mac/Documents/GitHub/BloomInventories/BloomInventories/BloomInventories/wwwroot/images/gallery1.png",

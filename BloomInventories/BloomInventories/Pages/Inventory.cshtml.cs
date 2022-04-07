@@ -14,13 +14,14 @@ namespace BloomInventories.Pages
         public string Message { get; set; } = string.Empty;
         public int location = 1;
 
-        public void OnGet(string message="")
+        public void OnGet(int location_id=1, string message="")
         {
             //sending the message so we can get a popup
             Message = message;
+            location= location_id;
 
             //calling flowers from inventory model
-            allFlowers = new Inventory(1).Flowers;
+            allFlowers = new Inventory(location).Flowers;
         }//onget
 
         //to update and call the post method
@@ -44,7 +45,7 @@ namespace BloomInventories.Pages
             Console.WriteLine($"{name} should change to {quantity}");
             new Inventory(location_id).UpdateQuantity(name, quantity, location_id);
 
-            return Redirect($"./Inventory/?message=There are now {quantity} {name} at {location_name}");
+            return Redirect($"./Inventory/?message=There are now {quantity} {name} at {location_name}&location_id={location_id}");
         }
 
         public void OnPostLocation(int location_id)

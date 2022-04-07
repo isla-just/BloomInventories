@@ -26,6 +26,8 @@ a {
 
     a:hover {
         text-decoration: none;
+        cursor: pointer;
+        color: #546757;
     }
 
 .nav-link {

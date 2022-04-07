@@ -235,10 +235,10 @@ h3 {
 }
 
 .weekly {
-    width: 80%;
-    height: 260px;
-    margin-top:70px;
-    margin-left:30px;
+    width: 70%;
+    height: 230px;
+    margin-top:100px;
+    margin-left:45px;
     overflow: hidden;
     justify-content: center;
     align-items: center;
@@ -246,16 +246,16 @@ h3 {
 
 .weeklyHeader {
     margin-top: 30px;
-    margin-left: 30px;
+    margin-left: 45px;
     color: #4D593F;
-    letter-spacing:2px;
+    letter-spacing: 2px;
 }
 
 .weeklyCat {
-    font-weight:300;
-    margin-left: 30px;
+    font-weight: 300;
+    margin-left: 45px;
     color: #4D593F;
-    margin-top:8px;
+    margin-top: 8px;
 }
 
 .weekly img {
@@ -266,17 +266,17 @@ h3 {
 }
 
 .weeklyP {
-    width:80%;
+    width: 75%;
     font-weight: 300;
-    font-style:italic;
-    margin-left: 30px;
+    font-style: italic;
+    margin-left: 45px;
     color: #4D593F;
     margin-top: 20px;
-    font-size:12px;
+    font-size: 12px;
 }
 
 .create {
-    margin-left: 30px;
+    margin-left: 45px;
     background-color: #C2C6B1;
     border-radius: 0px 40px 40px 0px;
     width: 60%;
@@ -284,10 +284,10 @@ h3 {
     letter-spacing: 2px;
     padding: 12px;
     margin-top: 20px;
-    font-size:12px;
-    font-weight:500;
-    border:none;
-    cursor:pointer;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
 }
 
 
@@ -334,13 +334,39 @@ h3 {
     margin-top:15px;
 }
 
-#curved {
-    font-family: 'Licorice', cursive;
-    font-size: 40px;
+
+.blob {
     position: absolute;
-    top: 125px;
-    right: 260px;
-    color: #546757;
-    text-align: center;
-    transform: rotate(-25deg);
+    top: 120px;
+    right: 290px;
+    width: 250px;
+    height: 100px;
+    border-radius: 200px;
+    background-color: #DFE1D5;
+    padding: 25px;
+}
+
+.blob h2 {
+    font-size: 40px;
+    font-weight: 500;
+    color: #4D593F;
+    float: left;
+    margin-left:5px;
+}
+
+.line3 {
+    height: 100%;
+    width: 1px;
+    background-color: #4D593F;
+    margin-left: 20px;
+    float: left;
+}
+
+.blob h4 {
+    font-weight: 300;
+    font-size: 15px;
+    color: #4D593F;
+    margin-left: 20px;
+    float: left;
+    margin-top:6px;
 }

@@ -24,6 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Licorice&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.png">
 </head>
 <body>
 
@@ -123,7 +124,11 @@
         </div>
     </div>
 
-    <h4 id="curved">@Model.BouquetCount bouquets here</h4>
+    <div class="blob">
+        <h2>@Model.BouquetCount</h2>
+            <div class="line3"></div>
+            <h4>Bouquets <br />here</h4>
+    </div>
 
     <script>
 
@@ -133,19 +138,13 @@
                 location.reload(true);
             });
 
+            let activeclass = localStorage.getItem("active");
+            if (activeclass != "true") {
+                window.location.href = "/";
+            }
+
         });
 
-        const circleType = new CircleType(document.getElementById('curved'));
-
-
-        circleType.radius(200);
-
-        const splitter = new GraphemeSplitter();
-
-        new CircleType(
-            document.getElementById('curved'),
-            splitter.splitGraphemes.bind(splitter)
-        );
 
     </script>
 

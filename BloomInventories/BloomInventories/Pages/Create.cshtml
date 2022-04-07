@@ -23,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.png">
 </head>
 <body>
 
@@ -38,21 +39,74 @@
         </div>
     </div>
 
-    <div class="craft-popup">
-        <div class="craft-container">
-            <div class="cross2"><img src="~/images/close.png" style="width:60%" /></div>
-            <div class="image-container"></div>
-            <div class="info-container">
-                <h1>Bouquet name</h1>
-                <h5>Evergreen</h5>
-                <div class="line-craft"></div>
-                <p>Peach ranunculus, pink poppy, pink sweet pea, peach carnation, white roses … read more</p>
-                <div class="create">LETS CREATE</div>
-            </div>
 
-        </div>
-        
-    </div>
+    @{
+        if (Model.Message == "popup")
+        {
+            @foreach (var bouquet in Model.popupRecipe)
+            {
+                <div class="craft-popup">
+                    <div class="craft-container">
+                        <div class="cross2"><img src="~/images/close.png" style="width:60%" /></div>
+                        <img class="image-container" src="@bouquet.ImgUrl" />
+
+
+                        <div class="info-container">
+                            <h1>@bouquet.Name</h1>
+                            <h5>@bouquet.Category</h5>
+                            <div class="line-craft"></div>
+                            <p>
+                                @foreach (var material in bouquet.Materials)
+                                {
+                                    if (material != "")
+                                    {
+                                        @(material + ", ");
+
+                                    }
+                                }
+                            </p>
+
+                            <form method="post" asp-page-handler="craft" asp-route-name="@bouquet.Name"
+                                  asp-route-quantity="@bouquet.Quantity" asp-route-location_id="@bouquet.location_id">
+                                @{
+                                    foreach (var material in bouquet.Materials)
+                                    {
+                                        <input type="hidden" name="materials[]" value="@material" />
+                                    }
+                                }
+
+                                <input type="submit" value="LETS CREATE" class="create" />
+                            </form>
+
+                        </div>
+
+                        <p class="quantity-p">You currently have <strong>@bouquet.Quantity @bouquet.Name </strong>bouquets</p>
+
+                    </div>
+
+                </div>
+
+            }//foreach
+
+        }else if (Model.Message != "")
+            {
+
+                <div class="overlay2">
+                    <div class="card-popup">
+                        <div class="top-illustration"><img src="~/images/illustration.png" style="width: 100%; margin-top: 30px;" /></div>
+                        <h5>STOCK TAKE</h5>
+                        <p>@Model.Message </p>
+                        <div class="close">DONE</div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                Console.WriteLine("static");
+            }
+        }
+
+
 
     <div class="navigation">
         <div class="logo">BLOOM INVENTORIES</div>
@@ -80,15 +134,6 @@
                 <input class="btn confirm" type="submit" value="Change" style="float:left;" />
             </form>
 
-            @*<script>// Get the text field that we're going to track
-
-                localStorage.setItem("active", 3);
-                let activeclass = localStorage.getItem("active");
-                $(".Survivaltenttab").click(function () {
-                    localStorage.setItem("active", 3);
-
-                });</script>*@
-
             <a class="sub-nav" asp-area="" asp-page="/Index">Home</a>
             <a class="sub-nav" asp-area="" asp-page="/Inventory">Inventory</a>
             <a class="sub-nav" asp-area="" asp-page="/Create"><strong>Create</strong></a>
@@ -101,140 +146,129 @@
             @foreach (var recipe in Model.allRecipes)
             {
 
-            <div class="card" value="@recipe.Category">
+                <div class="card" value="@recipe.Category">
 
-                <div class="row">
+                    <div class="row">
 
-                    <div class="img-container"><img class="flower-img" src="@recipe.ImgUrl" /></div>
+                        <div class="img-container"><img class="flower-img" src="@recipe.ImgUrl" /></div>
 
-                    <div style="float:left; width:50%">
-                        <h3>
-                            @recipe.Name
-                        </h3>
-                        <h5>@recipe.Category</h5>
+                        <div style="float:left; width:50%">
+                            <h3>
+                                @recipe.Name
+                            </h3>
+                            <h5>@recipe.Category</h5>
+                        </div>
+
                     </div>
 
-                </div>
 
+                    <div class="row">
 
-                <div class="row">
+                        <p class="ingredients">
+                            @foreach (var material in recipe.Materials)
+                            {
+                                if (material != "")
+                                {
+                                    @(material + ", ");
 
-                    <p class="ingredients">
-                        @foreach (var material in recipe.Materials)
+                                }
+                            }
+
+                        </p>
+                    </div>
+
+                    @{ if (recipe.IsCraftable())
                         {
-                            if (material != "")
-                            {
-                                @(material + ", ");
-
-                            }
+                            <form method="post" asp-page-handler="popup">
+                                <div class="amount">@recipe.Quantity</div>
+                                <input type="hidden" name="id" value="@recipe.Id" />
+                                <input class="done" type="submit" value="Create" />
+                            </form>
+                        }
+                        else
+                        {
+                            <div class="disabled" style="opacity:50%">
+                                <div class="amount">@recipe.Quantity</div>
+                                <input type="hidden" name="id" value="@recipe.Id" />
+                                <input class="done" type="submit" value="Create" style="cursor:default" />
+                            </div>
                         }
 
-                    </p>
-                </div>
+                    }
 
-
-                @{ if (recipe.IsCraftable())
-                {
-                    <form method="post" asp-page-handler="craft" asp-route-name="@recipe.Name"
-                          asp-route-quantity="@recipe.Quantity" asp-route-location_id="@recipe.location_id">
-                        @{
-                            foreach (var material in recipe.Materials)
-                            {
-                                <input type="hidden" name="materials[]" value="@material" />
-                            }
-                        }
-                        <div class="amount">@recipe.Quantity</div>
-                        <input class="done" type="submit" value="Create" />
-                    </form>
-        }
-        else
-        {
-        <div class="disabled" style="opacity:50%">
-            <div class="amount">@recipe.Quantity</div>
-            <input class="done" type="submit" value="Create" style="cursor:default"/>
-        </div>
-        }
-            }
-
-            </div><!--card-->
+                </div><!--card-->
             }<!--end of for each-->
 
         </div>
 
         <script>//jquery
 
-        $(function () {
+            $(function () {
 
-            $(".filter-overlay").hide();
-
-            $(".cross").on("click", function () {
-                $(".filter-overlay").fadeOut();
-            });
-
-
-            $(".cross2").on("click", function () {
-                $(".craft-popup").fadeOut();
-            });
-
-
-            $(".filter-btn").on("click", function () {
-                console.log("clicked");
-                $(".filter-overlay").fadeIn();
-            });
-
-            $(".show").on("click", function () {
-
-                $(".show").removeClass("active-show");
-                $(this).addClass("active-show");
-
-
-                if ($(".active-show").text() == "SHOW ALL BUNCHES") {
-                    $(".card").hide();
-                    $('.card[value="' + "bunch" + '"]').show();
-                    $(".filter-overlay").hide();
-
-                } else if ($(".active-show").text() == "SHOW ALL FLORAL") {
-                    $(".card").hide();
-                    $('.card[value="' + "floral" + '"]').show();
-                    $(".filter-overlay").hide();
-
-                } else if ($(".active-show").text() == "SHOW ALL LEAFY") {
-                    $(".card").hide();
-                    $('.card[value="' + "leafy" + '"]').show();
-                    $(".filter-overlay").hide();
-                } else if ($(".active-show").text() == "SHOW ALL SINGLE") {
-                $(".card").hide();
-                $('.card[value="' + "single" + '"]').show();
                 $(".filter-overlay").hide();
-            } else {
-                    $(".card").show();
-                    $(".filter-overlay").hide();
+
+                $(".cross").on("click", function () {
+                    $(".filter-overlay").fadeOut();
+                });
+
+                $(".close").on("click", function () {
+                    $(".overlay2").fadeOut();
+                });
+
+
+                $(".cross2").on("click", function () {
+                    $(".craft-popup").fadeOut();
+                });
+
+
+                $(".filter-btn").on("click", function () {
+                    console.log("clicked");
+                    $(".filter-overlay").fadeIn();
+                });
+
+                $(".show").on("click", function () {
+
+                    $(".show").removeClass("active-show");
+                    $(this).addClass("active-show");
+
+
+                    if ($(".active-show").text() == "SHOW ALL BUNCHES") {
+                        $(".card").hide();
+                        $('.card[value="' + "bunch" + '"]').show();
+                        $(".filter-overlay").hide();
+
+                    } else if ($(".active-show").text() == "SHOW ALL FLORAL") {
+                        $(".card").hide();
+                        $('.card[value="' + "floral" + '"]').show();
+                        $(".filter-overlay").hide();
+
+                    } else if ($(".active-show").text() == "SHOW ALL LEAFY") {
+                        $(".card").hide();
+                        $('.card[value="' + "leafy" + '"]').show();
+                        $(".filter-overlay").hide();
+                    } else if ($(".active-show").text() == "SHOW ALL SINGLE") {
+                        $(".card").hide();
+                        $('.card[value="' + "single" + '"]').show();
+                        $(".filter-overlay").hide();
+                    } else {
+                        $(".card").show();
+                        $(".filter-overlay").hide();
+                    }
+                });
+
+                $(".done").on("click", function () {
+                    $(".craft-popup").fadeIn();
+                    var bouquetName = $(this).parent().val();
+                    console.log(bouquetName);
+                });
+
+                let activeclass = localStorage.getItem("active");
+                if (activeclass != "true") {
+                    window.location.href = "/";
                 }
-            });
 
-            $(".craft-popup").hide();
 
-            $(".done").on("click", function () {
-                $(".craft-popup").fadeIn();
-                var bouquetName = $(this).parent().val();
-                console.log(bouquetName);
-            });
-
-            @*$(".confirm").on("click", function () {
-                if ($(".location-picker").val() == 1) {
-                  
-                     localStorage.setItem("active", 1);
-                  }
-            });*@
-   
-             @*localStorage.setItem("active", 1);
-            let activeclass = localStorage.getItem("active");
-
-            $(".Survivaltenttab").click(function () {
-                localStorage.setItem("active", 3);
-            });*@
-
-        });</script>
+            });</script>
 
 
 </body>

@@ -149,6 +149,64 @@ namespace BloomInventories.Services
 			return results;
 		}
 
+		//getting all the recipes
+		public static List<Recipe> PopupRecipe(int id)
+		{
+			using var con = new MySqlConnection(serverConfiguration);
+			//open the connection
+			con.Open();
+
+			//setup out query
+			string sql = "SELECT * FROM bouquets WHERE id=@id";
+			//executing our command
+			using var cmd = new MySqlCommand(sql, con);
+
+
+			cmd.Parameters.AddWithValue("@id", id);
+
+			//creates an instance of our command result that can be read in c#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			//init our returned list
+			var results = new List<Recipe>();
+
+
+			//loop through our returned data and do this for each entry
+			while (reader.Read())
+			{
+				//modelling a new object according to rhe class
+				var recipe = new Recipe(reader.GetInt32(3))
+				{
+					Id = reader.GetInt32(0),
+					Name = reader.GetString(1),
+					Category = reader.GetString(2),
+					ImgUrl = reader.GetString(4),
+					Price = reader.GetInt32(5),
+					location_id = reader.GetInt32(6)
+				};
+
+				var materials = new List<string>();
+
+				materials.Add(reader.GetString(7));
+				materials.Add(reader.GetString(8));
+				materials.Add(reader.GetString(9));
+				materials.Add(reader.GetString(10));
+				materials.Add(reader.GetString(11));
+				materials.Add(reader.GetString(12));
+				materials.Add(reader.GetString(13));
+				materials.Add(reader.GetString(14));
+				materials.Add(reader.GetString(15));
+				materials.Add(reader.GetString(16));
+				materials.Add(reader.GetString(17));
+				materials.Add(reader.GetString(18));
+
+				recipe.Materials = materials;
+
+				results.Add(recipe);
+			}
+			return results;
+		}
+
 		public static void CraftRecipe(string name, int count, List<string> materials, int location_id)
 		{
 			//connect to db
@@ -647,6 +705,8 @@ namespace BloomInventories.Services
 
 			return quantity;
 		}
+
+
 	}
 }
 

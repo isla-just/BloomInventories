@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BloomInventories.Models;
+using BloomInventories.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -13,23 +14,53 @@ namespace BloomInventories.Pages
         public int location = 1;
 
         public List<Recipe> allRecipes = new List<Recipe>();
-        public bool MessageSuccess { get; set; }
+        public List<Recipe> popupRecipe = new List<Recipe>();
 
-        public void OnGet(int location_id, bool success = true)
+        public bool MessageSuccess { get; set; }
+        public string Message { get; set; } = string.Empty;
+
+        public void OnGet(int location_id=1, bool success = true, string message = "")
         {
-            allRecipes = new RecipeBook(1).Recipes;
             MessageSuccess = success;
-            location =location_id;
+            Message = message;
+                                          
+
+            allRecipes = new RecipeBook(location).Recipes;
         }
 
 
         public IActionResult OnPostCraft(string name, int quantity, List<string> materials, int location_id)
         {
+
+            var location_name = "";
+
+            if (location_id == 1)
+            {
+                location_name = "Bloom Headquarters";
+            }
+            else if (location_id == 2)
+            {
+                location_name = "Peony Place";
+            }
+            else
+            {
+                location_name = "Carnation Corner";
+            }
+
             Console.WriteLine($"{name} should change to {quantity+1}");
             new RecipeBook(location_id).CraftRecipe(name, quantity + 1, materials, location_id);
             location = location_id;
 
-            return Redirect($"./Create/?message=There are now {quantity} {name}");
+            return Redirect($"./Create/?message=There are now {quantity} {name} bouquets at {location_name}&location_id={location_id}");
+        }
+
+        public void OnPostPopup(int id, int location_id)
+        {
+            popupRecipe = Database.PopupRecipe(id);
+
+            allRecipes = new RecipeBook(1).Recipes;
+            Message = "popup";
+
         }
 
 
