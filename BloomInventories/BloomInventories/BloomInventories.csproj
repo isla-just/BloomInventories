@@ -16,6 +16,7 @@
     <Folder Include="Services\" />
     <Folder Include="Interfaces\" />
     <Folder Include="wwwroot\verifyImg\" />
+    <Folder Include="migrations\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
@@ -24,6 +25,7 @@
     <None Remove="Services\" />
     <None Remove="Interfaces\" />
     <None Remove="XAct.Core.PCL" />
+    <None Remove="migrations\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />

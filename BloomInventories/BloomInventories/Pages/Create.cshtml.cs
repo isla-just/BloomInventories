@@ -23,8 +23,8 @@ namespace BloomInventories.Pages
         {
             MessageSuccess = success;
             Message = message;
-                                          
 
+            location = location_id;
             allRecipes = new RecipeBook(location).Recipes;
         }
 
@@ -51,14 +51,16 @@ namespace BloomInventories.Pages
             new RecipeBook(location_id).CraftRecipe(name, quantity + 1, materials, location_id);
             location = location_id;
 
-            return Redirect($"./Create/?message=There are now {quantity} {name} bouquets at {location_name}&location_id={location_id}");
+            return Redirect($"./Create/?message=There are now {quantity+1} {name} bouquets at {location_name}&location_id={location_id}");
         }
 
         public void OnPostPopup(int id, int location_id)
         {
+            location = location_id;
+            Console.WriteLine("current location" + location_id);
             popupRecipe = Database.PopupRecipe(id);
 
-            allRecipes = new RecipeBook(1).Recipes;
+            allRecipes = new RecipeBook(location_id).Recipes;
             Message = "popup";
 
         }

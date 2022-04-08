@@ -37,7 +37,7 @@ namespace BloomInventories.Services
 			con.Open();
 
 			//setup out query
-			string sql = "SELECT * FROM materials WHERE location_id=@location_id";
+			string sql = "SELECT * FROM materials WHERE location_id=@location_id ORDER BY quantity ASC;";
 
 			using var cmd = new MySqlCommand(sql, con);
 			cmd.Parameters.AddWithValue("@location_id", location_id);
@@ -100,7 +100,7 @@ namespace BloomInventories.Services
 			con.Open();
 
 			//setup out query
-			string sql = "SELECT * FROM bouquets WHERE location_id=@location_id";
+			string sql = "SELECT * FROM bouquets WHERE location_id=@location_id ORDER BY quantity ASC";
 			//executing our command
 			using var cmd = new MySqlCommand(sql, con);
 

@@ -66,6 +66,8 @@
                                 }
                             </p>
 
+                        </div>
+
                             <form method="post" asp-page-handler="craft" asp-route-name="@bouquet.Name"
                                   asp-route-quantity="@bouquet.Quantity" asp-route-location_id="@bouquet.location_id">
                                 @{
@@ -73,14 +75,16 @@
                                     {
                                         <input type="hidden" name="materials[]" value="@material" />
                                     }
-                                }
+                                }<div class="row" style="width:100%; margin-top:70px;" >
+                                        <p class="quantity-p">You currently have <strong>@bouquet.Quantity @bouquet.Name </strong>bouquets</p>
+                                        <input type="hidden" name="location_id" value="@bouquet.location_id" />
+                                        <input type="submit" value="LETS CREATE" class="create" />
 
-                                <input type="submit" value="LETS CREATE" class="create" />
+                                 </div>
                             </form>
 
-                        </div>
 
-                        <p class="quantity-p">You currently have <strong>@bouquet.Quantity @bouquet.Name </strong>bouquets</p>
+                   
 
                     </div>
 
@@ -179,11 +183,12 @@
 
                     @{ if (recipe.IsCraftable())
                         {
-                            <form method="post" asp-page-handler="popup">
-                                <div class="amount">@recipe.Quantity</div>
-                                <input type="hidden" name="id" value="@recipe.Id" />
-                                <input class="done" type="submit" value="Create" />
-                            </form>
+                                        <form method="post" asp-page-handler="popup">
+                                            <div class="amount">@recipe.Quantity</div>
+                                            <input type="hidden" name="id" value="@recipe.Id" />
+                                            <input type="hidden" name="location_id" value="@recipe.location_id" />
+                                            <input class="done" type="submit" value="Create" />
+                                        </form>
                         }
                         else
                         {
