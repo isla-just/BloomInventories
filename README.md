@@ -7,7 +7,6 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/isla-just/BloomInventories?color=%23EDC9B5)
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Instagram][instagram-shield]][instagram-url]
-[![Behance][behance-shield]][behance-url]
 
 <h6 align="center">Isla Just 200080 IDV 301</h6>
 <p align="center">
