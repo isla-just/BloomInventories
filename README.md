@@ -269,7 +269,7 @@ Distributed under the MIT License. See `LICENSE` for more information.\
 <!-- LICENSE -->
 ## Contact
 
-* **Isla Just** - [@byislajust](https://www.instagram.com/byislajust/) - dylandasilva.b@gmail.com
+* **Isla Just** - [@byislajust](https://www.instagram.com/byislajust/) - isla@just.co.za
 * **Project Link** - https://github.com/isla-just/BloomInventories
 
 <!-- ACKNOWLEDGEMENTS -->
@@ -291,8 +291,6 @@ mockups:
 [linkedin-url]: https://www.linkedin.com/in/isla-just-b038a2202
 [instagram-shield]: https://img.shields.io/badge/-Instagram-black.svg?style=flat-square&logo=instagram&colorB=555
 [instagram-url]: https://www.instagram.com/dylandasilva.designs/
-[behance-shield]: https://img.shields.io/badge/-Behance-black.svg?style=flat-square&logo=behance&colorB=555
-[behance-url]: https://www.behance.net/dylandasilva_
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [image1]: ReadMeImg/devmockup3.png
