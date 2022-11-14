@@ -25,7 +25,7 @@
       <a href="https://github.com/isla-just/BloomInventories"><strong>Explore the docs »</strong></a>
       <br />
       <br />
-      <a href="ReadMeImg/IslaJust_200080_DV300_T1_demo.mp4">View Demo</a>
+      <a href="https://drive.google.com/file/d/1Ric8WTxTG5rw0q3BZQGo2gAcgkRPNmQw/view?usp=sharing">View Demo</a>
        ·
        <a href="https://github.com/isla-just/BloomInventories/issues">Report Bug</a>
        ·
@@ -230,14 +230,14 @@ next I started making my project dynamic with jquery. I also added the unconvent
 
 To see a run through of the application, click below:
 
-[View Demonstration]()
+[View Demonstration](https://drive.google.com/file/d/1Ric8WTxTG5rw0q3BZQGo2gAcgkRPNmQw/view?usp=sharing)
 
 <!-- PROMO VIDEO -->
 ## Promotional Video
 
 To see the promotional video, click below:
 
-[View Promotional Video]()
+[View Promotional Video](https://youtu.be/8emq4cRNBXI)
 
 <!-- ROADMAP -->
 ## Roadmap
